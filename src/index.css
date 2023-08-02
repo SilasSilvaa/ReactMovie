@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.textCss {
+  @apply flex items-center text-base gap-4 font-bold;
+}
+
+.svgCss {
+  @apply w-8 h-8;
+}
