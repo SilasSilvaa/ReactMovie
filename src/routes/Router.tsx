@@ -5,6 +5,7 @@ import { Layout } from '../layouts/Default';
 import { Favourites } from '../pages/Favourites';
 import { Trending } from '../pages/Trending';
 import { User } from '../pages/User';
+import { Community } from '../pages/Community';
 
 export function Router() {
   return (
@@ -14,6 +15,7 @@ export function Router() {
         <Route path="/favourites" element={<Favourites />} />
         <Route path="/trending" element={<Trending />} />
         <Route path="/user" element={<User />} />
+        <Route path="/community" element={<Community />} />
       </Route>
     </Routes>
   );
