@@ -8,7 +8,7 @@ export function User() {
     <section className="flex flex-col p-6 pt-28 gap-10 md:pt-16 md:p-10">
       <p className="text-3xl font-bold text-white">Profile</p>
 
-      <div className="flex w-full flex-wrap justify-center p-6 gap-16 bg-light-gray rounded-lg md:items-start md:max-w-[60vw] md:flex-row">
+      <div className="flex w-full flex-wrap justify-center p-6 gap-6 bg-light-gray rounded-lg md:items-start md:max-w-[60vw] md:flex-row">
         <div className="flex flex-col items-center gap-4">
           <img
             src="/src/assets/film.jpg"
