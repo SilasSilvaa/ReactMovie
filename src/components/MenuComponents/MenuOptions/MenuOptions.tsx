@@ -18,7 +18,7 @@ export function MenuOptions() {
 
   return (
     <>
-      <div className="flex h-full flex-col p-2 md:p-0 rounded-md backdrop-blur-sm md:backdrop-blur-none">
+      <div className="flex flex-1 flex-col p-2 md:p-0 rounded-md backdrop-blur-sm md:backdrop-blur-none">
         <div className="flex flex-col gap-6 flex-1 p-4 pt-4 rounded-md md:pt-16 md:p-2">
           <NavLink
             to="/"
