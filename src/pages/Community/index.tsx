@@ -1,11 +1,21 @@
-import React from 'react';
-
+import {
+  Chat,
+  ChatCircle,
+  NotePencil,
+  PaperPlaneRight,
+  ThumbsUp,
+  X,
+} from '@phosphor-icons/react';
+import React, { useState } from 'react';
 export function Community() {
+  const [newPublication, setNewPublication] = useState(false);
+
   return (
-    <section className="w-full h-full flex flex-col pt-20 md:pt-4">
-      <div className="flex flex-col p-4 items-center gap-4">
+    <section className="w-full h-full flex flex-col pt-20 md:pt-4 relative">
+      <div className="flex w-full flex-col p-4 items-center gap-4 ">
         <p className="text-xl font-bold text-white">Trending topics</p>
 
+        {/* Topic options */}
         <div className="flex flex-wrap justify-center gap-4">
           <p className="text-xs text-white font-bold bg-red-500 p-2 px-4 cursor-pointer rounded-lg">
             Lorem
@@ -19,29 +29,156 @@ export function Community() {
           <p className="text-xs text-white font-bold bg-purple p-2 px-4 cursor-pointer rounded-lg">
             Lorem
           </p>
-          <p className="text-xs text-white font-bold bg-slate-500 p-2 px-4 cursor-pointer rounded-lg">
-            Lorem
-          </p>
-          <p className="text-xs text-white font-bold bg-yellow-500 p-2 px-4 cursor-pointer rounded-lg">
-            Lorem
-          </p>
-          <p className="text-xs text-white font-bold bg-orange-500 p-2 px-4 cursor-pointer rounded-lg">
-            Lorem
-          </p>
         </div>
       </div>
-      <div className="flex flex-1 flex-col p-4 bg-red-500 overflow-x-auto">
-        <div className="flex flex-col max-w-lg gap-6 bg-slate-800 md:flex-row">
-          <div className="w-14 h-14 bg-purple rounded-full"></div>
+      <div className="flex flex-1 w-full flex-col relative overflow-y-auto">
+        <div className="flex flex-col p-2 gap-6 justify-center items-center">
+          {/* First publication */}
+          <div className="flex w-full max-w-4xl flex-col bg-black border-2 border-red-500 rounded-lg gap-6 p-6">
+            <div className="w-10 h-10 bg-purple rounded-full"></div>
+            <div className="flex flex-col gap-4">
+              <div>
+                <span className="text-white p-2 rounded-lg bg-red-500">
+                  topic
+                </span>
+              </div>
+              <span className="text-white flex">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+                itaque exercitationem deserunt, qui sed consequatur quaerat id
+                adipisci nisi quo dolores est possimus quis quisquam accusamus
+                consectetur dolorem! Quasi, tempora. itaque exercitationem
+                deserunt, adipisci nisi quo dolores est possimus quis quisquam
+                accusamus consectetur dolorem! Quasi, tempora. itaque
+                exercitationem deserunt,
+              </span>
+            </div>
+            <div className="flex w-full gap-4 p-2">
+              <button>
+                <ThumbsUp className="text-white w-7 h-7" />
+              </button>
+              <button>
+                <ChatCircle className="text-white w-7 h-7" />
+              </button>
+            </div>
+            <hr className="border border-white" />
+            <span className="text-white font-bold">Comments</span>
+            <div className="flex flex-col p-2 gap-6">
+              <div className="flex flex-col gap-2 items-start md:flex-row md:items-center ">
+                <div className="w-8 h-8 rounded-full bg-blue-500"></div>
+                <div>
+                  <span className="text-white">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Modi, minima? Est accusamus autem rem
+                  </span>
+                </div>
+              </div>
+              {/*  */}
+              <div className="flex flex-col gap-2 items-start md:flex-row md:items-center ">
+                <div className="w-8 h-8 rounded-full bg-blue-500"></div>
+                <div>
+                  <span className="text-white">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Modi, minima? Est accusamus autem rem
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center justify-center">
+                <span className="text-blue-500 font-bold">See all</span>
+              </div>
+            </div>
+          </div>
+          {/* Seccond publication */}
 
-          <div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-              odio doloremque possimus, animi, quam, et accusantium vitae illo
-              reiciendis laborum nam?
-            </p>
+          <div className="flex w-full max-w-4xl flex-col bg-black border-2 border-red-500 rounded-lg gap-6 p-6">
+            <div className="w-10 h-10 bg-purple rounded-full"></div>
+            <div className="flex flex-col gap-4">
+              <div>
+                <span className="text-white p-2 rounded-lg bg-red-500">
+                  topic
+                </span>
+              </div>
+              <span className="text-white flex">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+                itaque exercitationem.
+              </span>
+            </div>
+            <div className="flex w-full p-2 gap-4">
+              <button>
+                <ThumbsUp className="text-white w-7 h-7" />
+              </button>
+              <button>
+                <ChatCircle className="text-white w-7 h-7" />
+              </button>
+            </div>
+            <hr className="border border-white" />
+            <span className="text-white font-bold">Comments</span>
+            <div className="flex flex-col p-2 gap-6">
+              <div className="flex flex-col gap-2 items-start md:flex-row md:items-center ">
+                <div className="w-8 h-8 rounded-full bg-blue-500"></div>
+                <div>
+                  <span className="text-white">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Modi, minima? Est accusamus autem rem
+                  </span>
+                </div>
+              </div>
+              {/*  */}
+
+              <div className="flex items-center justify-center"></div>
+            </div>
           </div>
         </div>
+      </div>
+      <div className="flex w-full p-6 flex-col items-end justify-end bottom-0 gap-4 absolute md:flex-row">
+        {newPublication && (
+          <div className="flex w-full flex-col gap-4 items-center justify-center bg-black border-2 border-red-500 rounded-lg p-4">
+            <span className="textCss text-white">New publication</span>
+
+            <form action="" className="w-full gap-4 flex flex-col max-w-4xl">
+              <div className="flex items-center w-full gap-2">
+                <label htmlFor="" className="text-white font-bold">
+                  Topic
+                </label>
+                <input
+                  type="text"
+                  className="flex flex-1 p-1 max-w-xs rounded-lg border-2 border-red-500 bg-white text-black"
+                />
+              </div>
+              <div className="flex flex-col w-full gap-2 md:flex-row">
+                <div className="flex flex-1 gap-2">
+                  <label
+                    htmlFor=""
+                    className="text-white font-bold min-h-[20vh]"
+                  >
+                    lorem
+                  </label>
+                  <textarea
+                    name=""
+                    id=""
+                    // maxLength={10}
+                    className="flex flex-1 resize-none p-2 rounded-lg border-2 border-red-500 bg-white text-black"
+                  ></textarea>
+                </div>
+                <div className="flex justify-end items-end">
+                  <button className="p-2 bg-red-500 rounded-lg max-h-12">
+                    <PaperPlaneRight className="svgCss text-white" />
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        )}
+
+        <button
+          className="flex rounded-full bottom border-2 border-red-500 p-2"
+          onClick={() => setNewPublication((state) => !state)}
+        >
+          {newPublication ? (
+            <X className="svgCss text-red-500" />
+          ) : (
+            <NotePencil className="svgCss text-red-500" />
+          )}
+        </button>
       </div>
     </section>
   );
