@@ -6,10 +6,16 @@ import {
   ThumbsUp,
   X,
 } from '@phosphor-icons/react';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 export function Community() {
   const [newPublication, setNewPublication] = useState(false);
+  const [newComment, setNewComment] = useState(false);
 
+  function handleAddComment() {
+    setNewComment((state) => !state);
+  }
+
+  console.log(newComment);
   return (
     <section className="w-full h-full flex flex-col pt-20 md:pt-4 relative">
       <div className="flex w-full flex-col p-4 items-center gap-4 ">
@@ -35,7 +41,10 @@ export function Community() {
         <div className="flex flex-col p-2 gap-6 justify-center items-center">
           {/* First publication */}
           <div className="flex w-full max-w-4xl flex-col bg-black border-2 border-red-500 rounded-lg gap-6 p-6">
-            <div className="w-10 h-10 bg-purple rounded-full"></div>
+            <div className="flex justify-between">
+              <div className="w-10 h-10 bg-purple rounded-full"></div>
+              <span className="text-white">Há 12 min</span>
+            </div>
             <div className="flex flex-col gap-4">
               <div>
                 <span className="text-white p-2 rounded-lg bg-red-500">
@@ -57,7 +66,10 @@ export function Community() {
                 <ThumbsUp className="text-white w-7 h-7" />
               </button>
               <button>
-                <ChatCircle className="text-white w-7 h-7" />
+                <ChatCircle
+                  className="text-white w-7 h-7"
+                  onClick={handleAddComment}
+                />
               </button>
             </div>
             <hr className="border border-white" />
@@ -83,14 +95,34 @@ export function Community() {
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <span className="text-blue-500 font-bold">See all</span>
+                <span className="text-blue-500 font-bold cursor-pointer">
+                  See all
+                </span>
               </div>
             </div>
+            {newComment && (
+              <div className="w-full p-4">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="w-8 h-8 rounded-full bg-blue-500"></div>
+
+                  <input
+                    type="text"
+                    className="flex flex-1 p-1 rounded-lg border-2 border-red-500 bg-white text-black"
+                  />
+                  <button className="rounded-lg bg-red-500 flex items-center justify-center p-2">
+                    <PaperPlaneRight className="text-white" />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
           {/* Seccond publication */}
 
           <div className="flex w-full max-w-4xl flex-col bg-black border-2 border-red-500 rounded-lg gap-6 p-6">
-            <div className="w-10 h-10 bg-purple rounded-full"></div>
+            <div className="flex justify-between">
+              <div className="w-10 h-10 bg-purple rounded-full"></div>
+              <span className="text-white">Há 1 hora</span>
+            </div>{' '}
             <div className="flex flex-col gap-4">
               <div>
                 <span className="text-white p-2 rounded-lg bg-red-500">
@@ -123,12 +155,11 @@ export function Community() {
                 </div>
               </div>
               {/*  */}
-
-              <div className="flex items-center justify-center"></div>
             </div>
           </div>
         </div>
       </div>
+      {/* Modal new publication */}
       <div className="flex w-full p-6 flex-col items-end justify-end bottom-0 gap-4 absolute md:flex-row">
         {newPublication && (
           <div className="flex w-full flex-col gap-4 items-center justify-center bg-black border-2 border-red-500 rounded-lg p-4">
@@ -169,6 +200,7 @@ export function Community() {
           </div>
         )}
 
+        {/* Button new publication */}
         <button
           className="flex rounded-full bottom border-2 border-red-500 p-2"
           onClick={() => setNewPublication((state) => !state)}
