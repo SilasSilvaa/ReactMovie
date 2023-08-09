@@ -4,11 +4,11 @@ import { Home } from '../pages/Home';
 import { Layout } from '../layouts/Default';
 import { Favourites } from '../pages/Favourites';
 import { Trending } from '../pages/Trending';
-import { User } from '../pages/User';
 import { Community } from '../pages/Community';
 import { Register } from '../pages/Register';
 import { Login } from '../pages/Login';
 import { AccountLoginAndRegister } from '../layouts/AccountLoginAndRegister';
+import { UserProfile } from '../pages/UserProfile';
 
 export function Router() {
   return (
@@ -17,7 +17,7 @@ export function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/favourites" element={<Favourites />} />
         <Route path="/trending" element={<Trending />} />
-        <Route path="/user" element={<User />} />
+        <Route path="/profile" element={<UserProfile />} />
         <Route path="/community" element={<Community />} />
       </Route>
 
