@@ -7,11 +7,11 @@ export function Layout() {
   return (
     <>
       <div className="flex bg-black">
-        <HamburgerMenu />
         <Menu />
-        <div className="flex w-full h-screen flex-col overflow-y-auto">
+        <HamburgerMenu />
+        <section className="flex w-full h-screen flex-col overflow-y-auto">
           <Outlet />
-        </div>
+        </section>
       </div>
     </>
   );
