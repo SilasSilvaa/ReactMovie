@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 
-export function User() {
+export function UserProfile() {
   const [changePassword, setChangePassword] = useState(false);
 
   return (
@@ -35,7 +35,7 @@ export function User() {
           <Input type="text" value={'Teste Teste'} />
 
           <div className="flex items-center pt-6 justify-center md:justify-end">
-            <Button text="Edit profile" />
+            <Button>Edit profile</Button>
           </div>
         </div>
       </div>
