@@ -49,7 +49,7 @@ export function Register() {
 
             <div className="w-full flex p-6 items-center justify-between">
               <span className="text-white">Do you have login? Enter.</span>
-              <Button text="Login" />
+              <Button>Register</Button>
             </div>
           </form>
         </div>

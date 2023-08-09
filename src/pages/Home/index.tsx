@@ -18,7 +18,7 @@ export function Home() {
             <Card />
             <Card />
             <div className="w-full flex justify-center p-6 md:justify-end">
-              <Button text="View all" />
+              <Button>View All</Button>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@ export function Home() {
             <Card />
             <Card />
             <div className="w-full flex justify-center p-6 md:justify-end">
-              <Button text="View all" />
+              <Button>View All</Button>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@ export function Home() {
             <Card />
             <Card />
             <div className="w-full flex justify-center p-6 md:justify-end">
-              <Button text="View all" />
+              <Button>View All</Button>
             </div>
           </div>
         </div>

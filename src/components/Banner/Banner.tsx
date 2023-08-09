@@ -17,7 +17,7 @@ export function Banner() {
         <h3 className="text-white font-bold text-3xl">New movie</h3>
         <span className="text-light-gray">2022 | Comedy horror | 1h30 </span>
         <div className="flex pt-10 gap-4">
-          <Button text="Watch trailer now" />
+          <Button>Watch trailer now</Button>
           <HeartIcon />
         </div>
       </div>

@@ -36,7 +36,7 @@ export function Login() {
             </div>
             <div className="w-full flex p-6 items-center justify-between">
               <span className="text-white">Forgget you'r password? </span>
-              <Button text="Login" />
+              <Button>Login</Button>
             </div>
           </form>
         </div>

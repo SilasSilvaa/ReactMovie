@@ -42,7 +42,8 @@ export function Trending() {
               enim.
             </p>
             <div className="flex gap-4">
-              <Button text="Watch Trailer" />
+              <Button>Watch Trailer</Button>
+
               <HeartIcon />
             </div>
           </div>
