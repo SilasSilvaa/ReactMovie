@@ -8,13 +8,13 @@ import {
   ChatsCircle,
 } from '@phosphor-icons/react';
 import React, { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 export function MenuOptions() {
   const { pathname } = useLocation();
   console.log(pathname);
 
-  const [userLog, setUserLog] = useState<boolean>(false);
+  const [userLog, setUserLog] = useState<boolean>(true);
 
   return (
     <>
@@ -73,13 +73,19 @@ export function MenuOptions() {
           ) : (
             <div className="flex flex-col gap-2">
               <div className="flex justify-between">
-                <span className="textCss text-white cursor-pointer hover:text-red-500 transition-colors ease-in-out">
+                <Link
+                  to={'/account/login'}
+                  className="textCss text-white cursor-pointer hover:text-red-500 transition-colors ease-in-out"
+                >
                   Login
-                </span>
+                </Link>
               </div>
-              <span className="text-sm text-white cursor-pointer font-bold hover:text-red-500 transition-colors ease-in-out">
+              <Link
+                to={'/account/register'}
+                className="text-sm text-white cursor-pointer font-bold hover:text-red-500 transition-colors ease-in-out"
+              >
                 Não possui login? Cadastre-se
-              </span>
+              </Link>
             </div>
           )}
           <div className="flex flex-1 items-end pt-10 md:pt-0">
