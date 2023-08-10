@@ -10,6 +10,18 @@
   @apply w-8 h-8;
 }
 
+.containerCard {
+  @apply flex flex-col gap-4 p-4 items-center md:items-start;
+}
+
+.contentCard {
+  @apply flex flex-col flex-wrap gap-4 w-full items-center justify-center md:flex-row md:items-start md:justify-start;
+}
+
+.mediumTitle {
+  @apply text-3xl font-bold text-white w-full;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
