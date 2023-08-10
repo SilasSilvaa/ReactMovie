@@ -5,7 +5,7 @@ import {
   ThumbsUp,
   X,
 } from '@phosphor-icons/react';
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 export function Community() {
   const [newPublication, setNewPublication] = useState(false);
   const [newComment, setNewComment] = useState(false);

@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 
 export function UserProfile() {
-  const [changePassword, setChangePassword] = useState(false);
-
   return (
     <div className="flex w-full flex-col pt-20 gap-10 px-6">
       <p className="text-3xl font-bold text-white">Profile</p>

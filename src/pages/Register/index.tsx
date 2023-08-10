@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
-import { ArrowCircleLeft, ArrowLeft } from '@phosphor-icons/react';
+import { ArrowCircleLeft } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import { LoginSvg } from '../../components/Svg/LoginSvg/LoginSvg';
 

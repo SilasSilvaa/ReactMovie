@@ -4,7 +4,6 @@ import {
   TrendUp,
   UserCircle,
   SignOut,
-  SignIn,
   ChatsCircle,
 } from '@phosphor-icons/react';
 import React, { useState } from 'react';
