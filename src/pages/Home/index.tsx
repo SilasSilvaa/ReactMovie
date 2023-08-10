@@ -11,9 +11,9 @@ export function Home() {
         {/* <ButtonToggleTheme /> */}
         <Banner />
 
-        <div className="flex flex-col gap-4 p-4 items-center md:items-start">
-          <p className="text-3xl font-bold text-white w-full">Trending</p>
-          <div className="flex flex-col flex-wrap gap-4 w-full items-center justify-center md:flex-row md:items-start md:justify-start">
+        <div className="containerCard">
+          <p className="mediumTitle">Trending</p>
+          <div className="contentCard">
             <Card />
             <Card />
             <Card />
@@ -22,9 +22,9 @@ export function Home() {
             </div>
           </div>
         </div>
-        <div className=" flex  flex-col gap-4 p-4 items-center md:items-start">
-          <p className="text-3xl font-bold text-white w-full">In High</p>
-          <div className="flex flex-col flex-wrap gap-4 w-full items-center justify-center md:flex-row md:items-start md:justify-start">
+        <div className="containerCard">
+          <p className="mediumTitle">In High</p>
+          <div className="contentCard">
             <Card />
             <Card />
             <Card />
@@ -34,9 +34,9 @@ export function Home() {
           </div>
         </div>
 
-        <div className="  flex  flex-col gap-4 p-4 items-center md:items-start">
-          <p className="text-3xl font-bold text-white w-full">Top films</p>
-          <div className="flex flex-col flex-wrap gap-4 w-full items-center justify-center md:flex-row md:items-start md:justify-start">
+        <div className="  containerCard">
+          <p className="mediumTitle">Top films</p>
+          <div className="contentCard">
             <Card />
             <Card />
             <Card />

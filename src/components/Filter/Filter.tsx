@@ -1,5 +1,7 @@
 import React from 'react';
 import { MagnifyingGlass } from '@phosphor-icons/react';
+import { Input } from '../Input/Input';
+import { Button } from '../Button/Button';
 
 export function Filter() {
   return (
@@ -15,13 +17,13 @@ export function Filter() {
           Documentaries
         </span>
       </div>
-      <div className="flex p-2 items-center justify-between border-2 rounded-md border-white">
-        <input
-          type="text"
-          className=" bg-transparent text-white outline-none flex-1 placeholder:text-white"
-          placeholder="Filmes, series, documentarios..."
-        />
-        <MagnifyingGlass size={25} className="text-white cursor-pointer" />
+      <div className="flex p-2 items-center justify-between gap-4">
+        <Input placeholder="movies, series, documentaries" />
+        {/* <Button> */}
+        <div className="border-2 border-red-500 p-2 rounded-lg hover:bg-red-500 transition-colors ease-in-out cursor-pointer">
+          <MagnifyingGlass size={25} className="text-white" />
+        </div>
+        {/* </Button> */}
       </div>
     </div>
   );

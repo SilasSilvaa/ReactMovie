@@ -11,7 +11,7 @@ export function Favourites() {
       </div>
 
       <div className="flex  flex-col gap-4 p-4 pt-20 items-center md:items-start">
-        <h3 className="text-3xl font-bold text-white w-full">Favourites</h3>
+        <h3 className="mediumTitle">Favourites</h3>
         <div className="flex flex-col flex-wrap gap-4 w-full items-center justify-center md:flex-row md:items-start md:justify-start">
           <Card />
           <Card />
