@@ -1,10 +1,20 @@
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 import { Button } from '../Button/Button';
 import { Heart } from '@phosphor-icons/react';
 
-export function Card() {
+interface CardProps {
+  className?: string;
+}
+
+export function Card({ className }: CardProps) {
   return (
-    <div className="flex relative flex-col w-80 h-80 rounded-lg">
+    <div
+      className={twMerge(
+        'flex relative flex-col w-80 h-80 rounded-lg',
+        className
+      )}
+    >
       <div className="absolute right-4 top-4">
         <Button>
           <Heart size={25} className="fill-white " />
