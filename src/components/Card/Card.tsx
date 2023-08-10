@@ -1,11 +1,14 @@
 import React from 'react';
-import { HeartIcon } from '../HeartIcon/HeartIcon';
+import { Button } from '../Button/Button';
+import { Heart } from '@phosphor-icons/react';
 
 export function Card() {
   return (
     <div className="flex relative flex-col w-80 h-80 rounded-lg">
       <div className="absolute right-4 top-4">
-        <HeartIcon />
+        <Button>
+          <Heart size={25} className="fill-white " />
+        </Button>
       </div>
       <img
         src="/src/assets/film.jpg"

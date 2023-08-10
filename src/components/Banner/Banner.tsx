@@ -1,7 +1,7 @@
 import React from 'react';
 import { Filter } from '../Filter/Filter';
-import { HeartIcon } from '../HeartIcon/HeartIcon';
 import { Button } from '../Button/Button';
+import { Heart } from '@phosphor-icons/react';
 
 export function Banner() {
   return (
@@ -18,7 +18,9 @@ export function Banner() {
         <span className="text-light-gray">2022 | Comedy horror | 1h30 </span>
         <div className="flex pt-10 gap-4">
           <Button>Watch trailer now</Button>
-          <HeartIcon />
+          <Button>
+            <Heart size={25} className="fill-white " />
+          </Button>
         </div>
       </div>
     </div>
