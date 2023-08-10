@@ -1,7 +1,7 @@
 import React from 'react';
 import { FilmReel } from '@phosphor-icons/react';
 
-export function Header() {
+export function Title() {
   return (
     <header className="flex items-center">
       <FilmReel className="w-12 h-12 text-red-500" />
