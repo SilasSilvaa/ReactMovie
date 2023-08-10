@@ -6,32 +6,20 @@ import { Heart } from '@phosphor-icons/react';
 
 export function Trending() {
   return (
-    <section className="flex flex-col pt-20 md:pt-0">
+    <section className="flex flex-col pt-20 gap-6 md:pt-0">
       <div className="relative pb-10">
         <Filter />
       </div>
 
-      <div className="flex flex-col gap-4 p-4 pt-20 items-center md:items-start">
-        <h3 className="mediumTitle">Trending</h3>
+      <div className="flex flex-col gap-6 pt-20 items-center justify-center">
+        <h3 className="mediumTitle px-6">Trending</h3>
 
-        <div className="w-full flex-col py-6 gap-8 md:flex md:flex-row">
-          <div className="flex relative flex-col rounded-lg md:w-3/6 ">
-            <div className="absolute right-4 top-4">
-              <Button>
-                <Heart size={25} className="fill-white " />
-              </Button>
-            </div>
-            <img
-              src="/src/assets/film.jpg"
-              alt=""
-              className="flex-1 object-cover rounded-lg max-w-2xl"
-            />
-            <div className="flex absolute bottom-0 bg-opacity-95 flex-col items-start text-center w-full p-4 bg-white rounded-b-lg ">
-              <span className="font-bold">New Film</span>
-              <span>2022 | Action comedy</span>
-            </div>
+        <div className="flex flex-col w-full justify-between gap-6 flex-wrap p-6 md:flex md:flex-row ">
+          <div className="flex-1">
+            <Card className="w-full h-full" />
           </div>
-          <div className="flex flex-col justify-center  md:w-3/6 md:p-6">
+
+          <div className="flex flex-col justify-center flex-1">
             <h3 className="mediumTitle">New movie</h3>
             <span className="text-white">2022 | Action comedy</span>
             <p className="text-white text-start py-6">

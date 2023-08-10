@@ -6,7 +6,7 @@ export function UserProfile() {
   const [changePassword, setChangePassword] = useState(false);
 
   return (
-    <section className="flex flex-col p-6 pt-28 gap-10 md:pt-16 md:p-10">
+    <div className="flex w-full flex-col pt-20 gap-10 px-6">
       <p className="text-3xl font-bold text-white">Profile</p>
 
       <div className="flex w-full flex-wrap justify-center p-6 gap-6 bg-black rounded-lg border-2 border-red-500 md:items-start md:max-w-[60vw] md:flex-row">
@@ -39,6 +39,6 @@ export function UserProfile() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

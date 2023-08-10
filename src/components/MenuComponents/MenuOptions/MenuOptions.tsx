@@ -61,9 +61,9 @@ export function MenuOptions() {
               </NavLink>
               <hr className="border border-white w-full" />
               <NavLink
-                to={'/user'}
+                to={'/profile'}
                 className={`textCss ${
-                  pathname === '/user' ? 'text-red-500' : 'text-white'
+                  pathname === '/profile' ? 'text-red-500' : 'text-white'
                 }`}
               >
                 <UserCircle size={40} className="svgCss" />

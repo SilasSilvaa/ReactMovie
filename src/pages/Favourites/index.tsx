@@ -1,7 +1,6 @@
 import React from 'react';
 import { Filter } from '../../components/Filter/Filter';
 import { Card } from '../../components/Card/Card';
-import { Button } from '../../components/Button/Button';
 
 export function Favourites() {
   return (
