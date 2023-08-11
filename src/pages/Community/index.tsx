@@ -115,7 +115,7 @@ export function Community() {
               </div>
             )}
           </div>
-
+          {/*  */}
           <div className="flex w-full max-w-4xl flex-col bg-black border-2 border-red-500 rounded-lg gap-6 p-6">
             <div className="flex justify-between">
               <div className="w-10 h-10 bg-purple rounded-full"></div>
