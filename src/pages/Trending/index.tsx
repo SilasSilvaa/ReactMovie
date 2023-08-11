@@ -40,7 +40,7 @@ export function Trending() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col py-4 items-center md:items-start">
+        <div className="flex w-full py-4 px-6 justify-start md:items-start">
           <h3 className="mediumTitle">Recently released</h3>
         </div>
         <div className="contentCard">

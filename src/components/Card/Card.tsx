@@ -16,7 +16,7 @@ export function Card({ className }: CardProps) {
       )}
     >
       <div className="absolute right-4 top-4">
-        <Button>
+        <Button className="p-2">
           <Heart size={25} className="fill-white " />
         </Button>
       </div>
