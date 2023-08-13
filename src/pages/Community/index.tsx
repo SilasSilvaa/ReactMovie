@@ -16,7 +16,7 @@ export function Community() {
 
   console.log(newComment);
   return (
-    <section className="flex flex-col pt-20 relative md:pt-0">
+    <section className="flex h-full flex-col pt-20 relative md:pt-0">
       <div className="flex w-full flex-col p-4 items-center gap-4 ">
         <p className="text-xl font-bold text-white">Trending topics</p>
 
@@ -197,10 +197,8 @@ export function Community() {
             </form>
           </div>
         )}
-
-        {/* Button new publication */}
         <button
-          className="flex rounded-full bottom border-2 border-red-500 p-2"
+          className="flex rounded-full border-2 border-red-500 p-2"
           onClick={() => setNewPublication((state) => !state)}
         >
           {newPublication ? (
@@ -210,6 +208,8 @@ export function Community() {
           )}
         </button>
       </div>
+
+      {/* Button new publication */}
     </section>
   );
 }
