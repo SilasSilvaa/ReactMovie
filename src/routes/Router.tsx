@@ -9,6 +9,7 @@ import { Register } from '../pages/Register';
 import { Login } from '../pages/Login';
 import { AccountLoginAndRegister } from '../layouts/AccountLoginAndRegister';
 import { UserProfile } from '../pages/UserProfile';
+import { Details } from '../pages/Details';
 
 export function Router() {
   return (
@@ -19,6 +20,7 @@ export function Router() {
         <Route path="/trending" element={<Trending />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/community" element={<Community />} />
+        <Route path="/details/:id" element={<Details />}></Route>
       </Route>
 
       <Route path="/account" element={<AccountLoginAndRegister />}>
