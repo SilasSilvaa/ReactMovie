@@ -21,24 +21,3 @@
 .mediumTitle {
   @apply text-3xl font-bold text-white w-full;
 }
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #fff;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background: #ef4444;
-}
-
-@media (max-width: 660px) {
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: transparent;
-  }
-}
