@@ -4,7 +4,7 @@ import { Card } from '../../components/Card/Card';
 
 export function Favourites() {
   return (
-    <section className="flex flex-col pt-20 md:pt-0">
+    <section className="flex flex-col pt-20 lg:pt-0">
       <div className="relative pb-10">
         <Filter />
       </div>

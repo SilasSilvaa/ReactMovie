@@ -6,7 +6,7 @@ import { Heart } from '@phosphor-icons/react';
 
 export function Trending() {
   return (
-    <section className="flex flex-col pt-20 gap-6 md:pt-0">
+    <section className="flex flex-col pt-20 gap-6 lg:pt-0">
       <div className="relative pb-10">
         <Filter />
       </div>

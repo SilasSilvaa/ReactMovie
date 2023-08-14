@@ -17,8 +17,8 @@ export function MenuOptions() {
 
   return (
     <>
-      <div className="flex flex-1 flex-col p-2 md:p-0 rounded-md backdrop-blur-sm md:backdrop-blur-none">
-        <div className="flex flex-col gap-6 flex-1 p-4 pt-4 rounded-md md:pt-16 md:p-2">
+      <div className="flex flex-1 flex-col p-2 rounded-md lg:p-0 ">
+        <div className="flex flex-col gap-6 flex-1 p-4 pt-4 rounded-md lg:pt-16 lg:p-2">
           <NavLink
             to="/"
             className={`textCss ${
@@ -87,7 +87,7 @@ export function MenuOptions() {
               </Link>
             </div>
           )}
-          <div className="flex flex-1 items-end pt-10 md:pt-0">
+          <div className="flex flex-1 items-end pt-10 lg:pt-0">
             <span className="textCss text-white cursor-pointer">
               {userLog && (
                 <>
