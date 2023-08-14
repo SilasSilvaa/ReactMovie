@@ -5,7 +5,7 @@ import { Heart } from '@phosphor-icons/react';
 
 export function Banner() {
   return (
-    <div className="flex w-full relative items-center flex-col justify-center md:h-auto">
+    <div className="flex w-full relative items-center flex-col justify-center lg:h-auto">
       <Filter />
       <img
         src="/src/assets/background.png"
@@ -22,6 +22,11 @@ export function Banner() {
             <Heart size={25} className="fill-white " />
           </Button>
         </div>
+      </div>
+      <div className="flex gap-2 absolute bottom-2">
+        <div className="w-2 h-2 bg-white rounded-full cursor-pointer"></div>
+        <div className="w-2 h-2 bg-gray rounded-full cursor-pointer"></div>
+        <div className="w-2 h-2 bg-gray rounded-full cursor-pointer"></div>
       </div>
     </div>
   );
