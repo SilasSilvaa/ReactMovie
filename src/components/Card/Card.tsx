@@ -25,7 +25,7 @@ export function Card({ className, detail }: CardProps) {
   return (
     <div
       className={twMerge(
-        'flex relative flex-col w-80 h-80 rounded-lg cursor-pointer',
+        'flex relative flex-col w-80 h-80 rounded-lg',
         className
       )}
       onClick={() => viewDetail(detail.id)}
@@ -38,7 +38,7 @@ export function Card({ className, detail }: CardProps) {
       <img
         src={detail.imageMovie}
         alt=""
-        className="w-full h-full object-cover rounded-lg"
+        className="w-full h-full object-cover rounded-lg cursor-pointer"
       />
       <div className="flex absolute bottom-0 bg-opacity-95 flex-col items-start text-center w-full p-4 bg-white rounded-b-lg ">
         <span className="font-bold">{detail.name}</span>
