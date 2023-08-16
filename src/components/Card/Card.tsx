@@ -1,17 +1,12 @@
 import React from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
+
 import { Button } from '../Button/Button';
 import { Heart } from '@phosphor-icons/react';
-import { Navigate, useNavigate } from 'react-router-dom';
 
 interface CardProps {
-  detail: {
-    id: string;
-    name: string;
-    date: string;
-    type: string;
-    imageMovie: string;
-  };
+  detail: any;
   className?: string;
 }
 
@@ -36,15 +31,13 @@ export function Card({ className, detail }: CardProps) {
         </Button>
       </div>
       <img
-        src={detail.imageMovie}
+        src={`https://image.tmdb.org/t/p/original/${detail.poster_path}`}
         alt=""
         className="w-full h-full object-cover rounded-lg cursor-pointer"
       />
       <div className="flex absolute bottom-0 bg-opacity-95 flex-col items-start text-center w-full p-4 bg-white rounded-b-lg ">
-        <span className="font-bold">{detail.name}</span>
-        <span>
-          {detail.date} | {detail.type}{' '}
-        </span>
+        <span className="font-bold">{detail.title}</span>
+        <span>{detail.release_date}</span>
       </div>
     </div>
   );
