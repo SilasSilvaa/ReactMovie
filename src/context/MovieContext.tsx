@@ -4,7 +4,7 @@ import { api } from '../api/axios';
 export const MovieContext = createContext({} as MovieContextProps);
 
 interface MovieContextProps {
-  movies: any[];
+  movies: MoviesProps[];
   getMoviesNowPlaying: () => void;
 }
 
