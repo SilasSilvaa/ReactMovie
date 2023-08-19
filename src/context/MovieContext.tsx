@@ -5,7 +5,9 @@ export const MovieContext = createContext({} as MovieContextProps);
 
 interface MovieContextProps {
   movies: MoviesProps[];
+  bannerMovies: any;
   getMoviesNowPlaying: () => void;
+  getUpcoming: () => void;
 }
 
 interface ChildrenProps {
@@ -42,14 +44,13 @@ interface getMovieProps {
 
 export function MovieContextProvider({ children }: ChildrenProps) {
   const [movies, setMovies] = useState<MoviesProps[]>([]);
-
-  useEffect(() => {
-    getMoviesNowPlaying();
-  }, []);
+  const [bannerMovies, setBannerMovies] = useState<MoviesProps[]>([]);
 
   async function getMoviesNowPlaying() {
     const resposne = await api.get<getMovieProps>('movie/now_playing', {
-      params: {},
+      params: {
+        language: 'pt-BR',
+      },
     });
 
     const data = resposne.data.results;
@@ -57,10 +58,26 @@ export function MovieContextProvider({ children }: ChildrenProps) {
     setMovies(data);
   }
 
+  async function getUpcoming() {
+    const response = await api.get<getMovieProps>('movie/upcoming', {
+      params: {
+        language: 'pt-BR',
+      },
+    });
+    const data = response.data.results;
+
+    const randomMovies = [...data].sort(() => Math.random() - 0.5);
+    const currentMovies = randomMovies.slice(0, 3);
+
+    setBannerMovies(currentMovies);
+  }
+
   return (
     <MovieContext.Provider
       value={{
         movies,
+        bannerMovies,
+        getUpcoming,
         getMoviesNowPlaying,
       }}
     >
