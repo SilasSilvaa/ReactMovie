@@ -66,10 +66,10 @@ export function MovieContextProvider({ children }: ChildrenProps) {
     });
     const data = response.data.results;
 
-    const randomMovies = [...data].sort(() => Math.random() - 0.5);
-    const currentMovies = randomMovies.slice(0, 3);
-
-    setBannerMovies(currentMovies);
+    for (let i = 0; i < 3; i++) {
+      const randowMovie = data[Math.floor(Math.random() * data.length)];
+      setBannerMovies((state) => [...state, randowMovie]);
+    }
   }
 
   return (
