@@ -5,31 +5,6 @@ import { Heart } from '@phosphor-icons/react';
 import { Card } from '../../components/Card/Card';
 
 export function Details() {
-  // const { id } = useParams();
-  const [cards, setCards] = useState([
-    {
-      id: '1',
-      name: 'New Film',
-      date: '2022',
-      type: 'Action',
-      imageMovie: '/src/assets/film.jpg',
-    },
-    {
-      id: '2',
-      name: 'New Film',
-      date: '2022',
-      type: 'Action',
-      imageMovie: '/src/assets/film.jpg',
-    },
-    {
-      id: '3',
-      name: 'New Film',
-      date: '2022',
-      type: 'Action',
-      imageMovie: '/src/assets/film.jpg',
-    },
-  ]);
-
   return (
     <>
       <section className="contentCard pt-20 md:pt-0 md:p-12">

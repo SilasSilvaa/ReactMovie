@@ -5,33 +5,8 @@ import { Button } from '../../components/Button/Button';
 import { MovieContext } from '../../context/MovieContext';
 
 export function Home() {
-  const [cards, setCards] = useState([
-    {
-      id: '1',
-      name: 'New Film',
-      date: '2022',
-      type: 'Action',
-      imageMovie: '/src/assets/film.jpg',
-    },
-    {
-      id: '2',
-      name: 'New Film',
-      date: '2022',
-      type: 'Action',
-      imageMovie: '/src/assets/film.jpg',
-    },
-    {
-      id: '3',
-      name: 'New Film',
-      date: '2022',
-      type: 'Action',
-      imageMovie: '/src/assets/film.jpg',
-    },
-  ]);
-
   const { movies } = useContext(MovieContext);
 
-  // const filteredMovies = movies.map
   return (
     <>
       <section className="flex flex-col gap-4 pt-20 lg:pt-0">
