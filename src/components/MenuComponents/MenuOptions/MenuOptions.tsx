@@ -17,7 +17,7 @@ export function MenuOptions() {
 
   return (
     <>
-      <div className="flex flex-1 flex-col p-2 rounded-md lg:p-0 ">
+      <aside className="flex flex-1 flex-col p-2 rounded-md lg:p-0 ">
         <div className="flex flex-col gap-6 flex-1 p-4 pt-4 rounded-md lg:pt-16 lg:p-2">
           <NavLink
             to="/"
@@ -98,7 +98,7 @@ export function MenuOptions() {
             </span>
           </div>
         </div>
-      </div>
+      </aside>
     </>
   );
 }
