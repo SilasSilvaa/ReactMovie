@@ -1,6 +1,6 @@
 import React from 'react';
 import { Filter } from '../../components/Filter/Filter';
-import { Card } from '../../components/Card/Card';
+// import { Card } from '../../components/Card/Card';
 import { Button } from '../../components/Button/Button';
 import { Heart } from '@phosphor-icons/react';
 
@@ -16,7 +16,7 @@ export function Trending() {
 
         <div className="flex flex-col w-full justify-between gap-6 flex-wrap p-6 md:flex md:flex-row ">
           <div className="flex-1">
-            <Card className="w-full h-full" />
+            {/* <Card className="w-full h-full" /> */}
           </div>
 
           <div className="flex flex-col justify-center flex-1">
@@ -44,9 +44,9 @@ export function Trending() {
           <h3 className="mediumTitle">Recently released</h3>
         </div>
         <div className="contentCard">
+          {/* <Card />
           <Card />
-          <Card />
-          <Card />
+          <Card /> */}
         </div>
       </div>
     </section>

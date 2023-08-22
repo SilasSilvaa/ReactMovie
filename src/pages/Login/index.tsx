@@ -25,7 +25,6 @@ export function Login() {
           Log-in in your account
         </h2>
         <div className="w-full flex flex-col items-center p-6 gap-8 bg-black border-2 border-red-500 rounded-xl lg:max-w-2xl">
-          {/* <h2 className="text-2xl font-bold text-white">Login</h2> */}
           <form action="submit" className="flex flex-col w-full gap-4">
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="  text-white font-bold">
