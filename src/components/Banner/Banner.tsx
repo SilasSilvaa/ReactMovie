@@ -4,11 +4,7 @@ import { Button } from '../Button/Button';
 import { Heart } from '@phosphor-icons/react';
 import { MovieContext, MoviesProps } from '../../context/MovieContext';
 
-interface dataProps {
-  data: MoviesProps;
-}
-
-export function Banner({ data }: dataProps) {
+export function Banner() {
   const { getUpcoming, bannerMovies } = useContext(MovieContext);
 
   const [index, setIndex] = useState(0);
