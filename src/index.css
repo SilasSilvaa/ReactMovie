@@ -11,11 +11,11 @@
 }
 
 .containerCard {
-  @apply flex flex-col gap-4 p-4 items-center md:items-start;
+  @apply flex flex-col gap-4 p-4 items-center;
 }
 
 .contentCard {
-  @apply flex flex-col flex-wrap gap-4 w-full items-center justify-center md:flex-row md:items-start md:justify-start;
+  @apply flex flex-wrap gap-4 w-full;
 }
 
 .mediumTitle {
