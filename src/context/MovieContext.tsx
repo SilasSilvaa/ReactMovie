@@ -4,8 +4,8 @@ import { api } from '../api/axios';
 export const MovieContext = createContext({} as MovieContextProps);
 
 interface MovieContextProps {
-  movies: MoviesProps[];
-  bannerMovies: any;
+  nowPlayingMovies: MoviesProps[];
+  bannerMovies: MoviesProps[];
   getMoviesNowPlaying: () => void;
   getUpcoming: () => void;
 }
@@ -15,7 +15,7 @@ interface ChildrenProps {
 }
 
 export interface MoviesProps {
-  id: number;
+  id: string;
   backdrop_path: string;
   original_title: string;
   overview: string;
@@ -43,7 +43,7 @@ interface getMovieProps {
 }
 
 export function MovieContextProvider({ children }: ChildrenProps) {
-  const [movies, setMovies] = useState<MoviesProps[]>([]);
+  const [nowPlayingMovies, setNowPlayingMovies] = useState<MoviesProps[]>([]);
   const [bannerMovies, setBannerMovies] = useState<MoviesProps[]>([]);
 
   async function getMoviesNowPlaying() {
@@ -55,7 +55,7 @@ export function MovieContextProvider({ children }: ChildrenProps) {
 
     const data = resposne.data.results;
 
-    setMovies(data);
+    setNowPlayingMovies(data);
   }
 
   async function getUpcoming() {
@@ -75,7 +75,7 @@ export function MovieContextProvider({ children }: ChildrenProps) {
   return (
     <MovieContext.Provider
       value={{
-        movies,
+        nowPlayingMovies,
         bannerMovies,
         getUpcoming,
         getMoviesNowPlaying,
