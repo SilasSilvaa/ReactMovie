@@ -4,9 +4,10 @@ import { twMerge } from 'tailwind-merge';
 
 import { Button } from '../Button/Button';
 import { Heart } from '@phosphor-icons/react';
+import { MoviesProps } from '../../context/MovieContext';
 
 interface CardProps {
-  detail: any;
+  detail: MoviesProps;
   className?: string;
 }
 
@@ -37,7 +38,7 @@ export function Card({ className, detail }: CardProps) {
       />
       <div className="flex absolute bottom-0 bg-opacity-95 flex-col items-start text-center w-full p-4 bg-white rounded-b-lg ">
         <span className="font-bold">{detail.title}</span>
-        <span>{detail.release_date}</span>
+        {/* <span>{detail.release_date}</span> */}
       </div>
     </div>
   );
