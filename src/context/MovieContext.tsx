@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useEffect, useState } from 'react';
+import React, { ReactNode, createContext, useState } from 'react';
 import { api } from '../api/axios';
 
 export const MovieContext = createContext({} as MovieContextProps);
@@ -6,7 +6,9 @@ export const MovieContext = createContext({} as MovieContextProps);
 interface MovieContextProps {
   nowPlayingMovies: MoviesProps[];
   bannerMovies: MoviesProps[];
-  getMoviesNowPlaying: () => void;
+  detailMovie: any;
+  getMovies: () => void;
+  getDetails: (id: string) => void;
   getUpcoming: () => void;
 }
 
@@ -45,13 +47,10 @@ interface getMovieProps {
 export function MovieContextProvider({ children }: ChildrenProps) {
   const [nowPlayingMovies, setNowPlayingMovies] = useState<MoviesProps[]>([]);
   const [bannerMovies, setBannerMovies] = useState<MoviesProps[]>([]);
+  const [detailMovie, setDetailMovie] = useState();
 
-  async function getMoviesNowPlaying() {
-    const resposne = await api.get<getMovieProps>('movie/now_playing', {
-      params: {
-        language: 'pt-BR',
-      },
-    });
+  async function getMovies() {
+    const resposne = await api.get<getMovieProps>('movie/now_playing');
 
     const data = resposne.data.results;
 
@@ -59,11 +58,7 @@ export function MovieContextProvider({ children }: ChildrenProps) {
   }
 
   async function getUpcoming() {
-    const response = await api.get<getMovieProps>('movie/upcoming', {
-      params: {
-        language: 'pt-BR',
-      },
-    });
+    const response = await api.get<getMovieProps>('movie/upcoming');
     const data = response.data.results;
 
     for (let i = 0; i < 3; i++) {
@@ -72,13 +67,22 @@ export function MovieContextProvider({ children }: ChildrenProps) {
     }
   }
 
+  async function getDetails(id: string) {
+    const response = await api.get(`movie/${id}`);
+    // const data = response.data.results;
+
+    setDetailMovie(response.data);
+  }
+
   return (
     <MovieContext.Provider
       value={{
         nowPlayingMovies,
         bannerMovies,
+        detailMovie,
         getUpcoming,
-        getMoviesNowPlaying,
+        getDetails,
+        getMovies,
       }}
     >
       {children}
