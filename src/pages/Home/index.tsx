@@ -3,15 +3,15 @@ import { Banner } from '../../components/Banner/Banner';
 import { Card } from '../../components/Card/Card';
 import { Button } from '../../components/Button/Button';
 import { MovieContext } from '../../context/MovieContext';
+import { NavLink } from 'react-router-dom';
 
 export function Home() {
-  const { nowPlayingMovies, getMoviesNowPlaying } = useContext(MovieContext);
+  const { nowPlayingMovies, getMovies } = useContext(MovieContext);
 
   useEffect(() => {
-    getMoviesNowPlaying();
+    getMovies();
   }, []);
 
-  console.log(nowPlayingMovies);
   return (
     <>
       <section className="flex flex-col gap-4 pt-20 lg:pt-0">
@@ -27,7 +27,9 @@ export function Home() {
               ))}
             </div>
             <div className="w-full flex justify-end p-2">
-              <Button>View All</Button>
+              <Button>
+                <NavLink to={'/all/trending'}>View All</NavLink>
+              </Button>
             </div>
           </div>
         </div>
@@ -39,13 +41,13 @@ export function Home() {
                 <Card detail={movie} key={movie.id} className="carousel-item" />
               ))}
             </div>
-            <div className="w-full flex justify-end p-2">
-              <Button>View All</Button>
-            </div>
+            <Button>
+              <NavLink to={'/all/in_high'}>View All</NavLink>
+            </Button>
           </div>
         </div>
 
-        <div className="  containerCard">
+        <div className="containerCard">
           <p className="mediumTitle">Top films</p>
           <div className="contentCard">
             <div className="carousel max-w-full gap-6 rounded-box">
@@ -54,7 +56,9 @@ export function Home() {
               ))}
             </div>
             <div className="w-full flex justify-end p-2">
-              <Button>View All</Button>
+              <Button>
+                <NavLink to={'/all/top_films'}>View All</NavLink>
+              </Button>
             </div>
           </div>
         </div>
