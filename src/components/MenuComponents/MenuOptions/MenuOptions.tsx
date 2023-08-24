@@ -11,9 +11,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 
 export function MenuOptions() {
   const { pathname } = useLocation();
-  console.log(pathname);
-
-  const [userLog, setUserLog] = useState<boolean>(true);
+  const [userLog, setUserLog] = useState<boolean>(false);
 
   return (
     <>
