@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 
 import { Button } from '../Button/Button';
@@ -12,19 +12,13 @@ interface CardProps {
 }
 
 export function Card({ className, detail }: CardProps) {
-  const navigate = useNavigate();
-
-  function viewDetail(id: string) {
-    navigate(`details/${id}`);
-  }
-
   return (
+    // <Link to={`details/${detail.id}`}>
     <div
       className={twMerge(
         'flex relative flex-col w-80 h-80 rounded-lg',
         className
       )}
-      onClick={() => viewDetail(detail.id)}
     >
       <div className="absolute right-4 top-4">
         <Button className="p-2">
@@ -44,5 +38,6 @@ export function Card({ className, detail }: CardProps) {
         {/* <span>{detail.release_date}</span> */}
       </div>
     </div>
+    // {/* </Link> */}
   );
 }
