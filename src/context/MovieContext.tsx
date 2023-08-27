@@ -6,10 +6,12 @@ export const MovieContext = createContext({} as MovieContextProps);
 interface MovieContextProps {
   nowPlayingMovies: MoviesProps[];
   bannerMovies: MoviesProps[];
-  detailMovie: any;
+  detailMovie: DetailMovieProps | undefined;
+  similarMovies: MoviesProps[];
   getMovies: () => void;
-  getDetails: (id: string) => void;
   getUpcoming: () => void;
+  getDetails: (id: string) => void;
+  getSimilarMovies: (id: string) => void;
 }
 
 interface ChildrenProps {
@@ -18,19 +20,37 @@ interface ChildrenProps {
 
 export interface MoviesProps {
   id: string;
-  backdrop_path: string;
-  original_title: string;
-  overview: string;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  vote_count: number;
-  adult?: boolean;
-  genre_ids?: number[];
-  original_language?: string;
-  popularity?: number;
-  video?: boolean;
+  title?: string;
+  name?: string;
+  poster_path?: string;
+  logo_path?: string;
+  backdrop_path?: string;
+  release_date?: string;
   vote_average?: number;
+}
+
+interface DetailMovieProps {
+  id: number;
+  title: string;
+  overview?: string;
+  backdrop_path?: string;
+  genres?: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
+  homepage?: string;
+  production_companies?: [
+    {
+      id: number;
+      logo_path: string | null;
+      name: string;
+      origin_country: string;
+    }
+  ];
+  release_date?: string;
+  vote_average: number;
 }
 
 interface getMovieProps {
@@ -47,7 +67,10 @@ interface getMovieProps {
 export function MovieContextProvider({ children }: ChildrenProps) {
   const [nowPlayingMovies, setNowPlayingMovies] = useState<MoviesProps[]>([]);
   const [bannerMovies, setBannerMovies] = useState<MoviesProps[]>([]);
-  const [detailMovie, setDetailMovie] = useState();
+  const [similarMovies, setSimilarMovies] = useState<MoviesProps[]>([]);
+  const [detailMovie, setDetailMovie] = useState<
+    DetailMovieProps | undefined
+  >();
 
   async function getMovies() {
     const resposne = await api.get<getMovieProps>('movie/now_playing');
@@ -69,9 +92,15 @@ export function MovieContextProvider({ children }: ChildrenProps) {
 
   async function getDetails(id: string) {
     const response = await api.get(`movie/${id}`);
-    // const data = response.data.results;
 
     setDetailMovie(response.data);
+  }
+
+  async function getSimilarMovies(id: string) {
+    const response = await api.get<getMovieProps>(`movie/${id}/similar`);
+
+    const data = response.data.results;
+    setSimilarMovies(data);
   }
 
   return (
@@ -80,9 +109,11 @@ export function MovieContextProvider({ children }: ChildrenProps) {
         nowPlayingMovies,
         bannerMovies,
         detailMovie,
+        similarMovies,
         getUpcoming,
         getDetails,
         getMovies,
+        getSimilarMovies,
       }}
     >
       {children}
