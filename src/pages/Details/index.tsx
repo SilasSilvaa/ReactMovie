@@ -17,8 +17,6 @@ export function Details() {
     }
   }, []);
 
-  console.log(detailMovie?.production_companies);
-
   return (
     <>
       <section className="contentCard pt-20 md:pt-0 md:p-12">
@@ -61,7 +59,7 @@ export function Details() {
                 </Button>
               </div>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-wrap">
               {detailMovie?.genres?.map((gender) => (
                 <span
                   key={gender.id}
@@ -82,7 +80,10 @@ export function Details() {
               <span className="text-white font-bold text-xl">Created By</span>
               <div className="flex gap-4 flex-wrap  max-w-3xl">
                 {detailMovie?.production_companies?.map((company) => (
-                  <span className="font-bold text-white text-center p-2 bg-red-500 rounded-lg ">
+                  <span
+                    key={company.id}
+                    className="font-bold text-white text-center p-2 bg-red-500 rounded-lg "
+                  >
                     {company.name}
                   </span>
                 ))}
