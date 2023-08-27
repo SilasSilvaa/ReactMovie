@@ -36,8 +36,11 @@ export function Card({ className, detail }: CardProps) {
         alt=""
         className="w-full h-full object-cover rounded-lg cursor-pointer"
       />
-      <div className="flex absolute bottom-0 bg-opacity-95 flex-col items-start text-center w-full p-4 bg-white rounded-b-lg ">
-        <span className="font-bold">{detail.title}</span>
+      <div
+        className="flex absolute bottom-0 bg-opacity-95 flex-col items-start text-center w-full 
+      p-4 bg-white rounded-b-lg "
+      >
+        <span className="font-bold text-black">{detail.title}</span>
         {/* <span>{detail.release_date}</span> */}
       </div>
     </div>
