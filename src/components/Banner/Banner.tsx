@@ -31,8 +31,8 @@ export function Banner() {
           {bannerMovies[index]?.title}
         </h3>
         <span className="text-light-gray">
-          {bannerMovies[index]?.release_date} | {bannerMovies[index]?.genre_ids}{' '}
-          | {bannerMovies[index]?.vote_count}
+          {bannerMovies[index]?.release_date} | |{' '}
+          {bannerMovies[index]?.vote_average}
         </span>
         <div className="flex pt-10 gap-4">
           <Button>Watch trailer now</Button>
