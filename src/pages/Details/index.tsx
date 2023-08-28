@@ -15,7 +15,7 @@ export function Details() {
       getDetails(id);
       getSimilarMovies(id);
     }
-  }, []);
+  }, [id]);
 
   return (
     <>
