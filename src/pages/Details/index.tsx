@@ -1,21 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Heart } from '@phosphor-icons/react';
 import { MovieContext } from '../../context/MovieContext';
 import { Card } from '../../components/Card/Card';
+import { useQuery } from 'react-query';
 
 export function Details() {
   const { id } = useParams();
-  const { detailMovie, similarMovies, getDetails, getSimilarMovies } =
+  const { getDetails, getRecommendations, getMovies } =
     useContext(MovieContext);
 
-  useEffect(() => {
-    if (id) {
-      getDetails(id);
-      getSimilarMovies(id);
-    }
-  }, [id]);
+  const { data: detail } = useQuery('details', () => getDetails('569094'));
+
+  const { data: recomendations } = useQuery('recomendations', () =>
+    getRecommendations('569094')
+  );
+
+  console.log(recomendations);
+  // console.log(data);
+
+  // console.log(recomendations);
 
   return (
     <>
@@ -24,7 +29,7 @@ export function Details() {
           <div className="flex-1">
             <div className="flex relative flex-col w-full rounded-lg">
               <img
-                src={`https://image.tmdb.org/t/p/original/${detailMovie?.backdrop_path}`}
+                src={`https://image.tmdb.org/t/p/original/${detail?.backdrop_path}`}
                 alt=""
                 className="max-h-[75vh] object-cover rounded-lg cursor-pointer"
               />
@@ -35,19 +40,18 @@ export function Details() {
             <div className="w-full flex justify-between flex-wrap gap-6">
               <div className="flex flex-col gap-1">
                 <div>
-                  <h3 className="mediumTitle">{detailMovie?.title}</h3>
+                  <h3 className="mediumTitle">{detail?.title}</h3>
                 </div>
 
                 <span className="font-bold">
-                  Avaliação:{' '}
-                  {detailMovie && Math.floor(detailMovie?.vote_average)} / 10
+                  Avaliação: {detail && Math.floor(detail?.vote_average)} / 10
                 </span>
               </div>
 
               <div className="flex gap-4">
                 <Button>
                   <Link
-                    to={`https://www.youtube.com/results?search_query=${detailMovie?.title}`}
+                    to={`https://www.youtube.com/results?search_query=${detail?.title}`}
                     target="_blank"
                   >
                     Watch Trailer
@@ -60,7 +64,7 @@ export function Details() {
               </div>
             </div>
             <div className="flex gap-2 flex-wrap">
-              {detailMovie?.genres?.map((gender) => (
+              {detail?.genres?.map((gender) => (
                 <span
                   key={gender.id}
                   className="px-2 py-1 rounded-lg bg-red-500 text-white font-bold"
@@ -73,13 +77,13 @@ export function Details() {
               <span className="mediumTitle">Overview</span>
 
               <p className="text-white leading-6 max-w-4xl">
-                {detailMovie?.overview}
+                {detail?.overview}
               </p>
             </div>
             <div className="flex flex-col gap-4">
               <span className="text-white font-bold text-xl">Created By</span>
               <div className="flex gap-4 flex-wrap  max-w-3xl">
-                {detailMovie?.production_companies?.map((company) => (
+                {detail?.production_companies?.map((company) => (
                   <span
                     key={company.id}
                     className="font-bold text-white text-center p-2 bg-red-500 rounded-lg "
@@ -97,7 +101,7 @@ export function Details() {
             </span>
 
             <div className=" carousel max-w-full gap-6 rounded-box">
-              {similarMovies.map((similarMovie) => (
+              {recomendations?.map((similarMovie) => (
                 <Card
                   detail={similarMovie}
                   key={similarMovie.id}
