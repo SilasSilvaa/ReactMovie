@@ -4,7 +4,7 @@ import { api } from '../api/axios';
 export const MovieContext = createContext({} as MovieContextProps);
 
 interface MovieContextProps {
-  detailMovie: DetailMovieProps | undefined;
+  // detailMovie: DetailMovieProps | undefined;
   getMovies: () => Promise<MoviesProps[]>;
   getUpcoming: () => Promise<MoviesProps[]>;
   getDetails: (id: string) => Promise<DetailMovieProps>;
@@ -105,7 +105,6 @@ export function MovieContextProvider({ children }: ChildrenProps) {
   return (
     <MovieContext.Provider
       value={{
-        detailMovie,
         getUpcoming,
         getDetails,
         getMovies,
