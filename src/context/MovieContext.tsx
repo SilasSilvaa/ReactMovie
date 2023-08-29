@@ -4,14 +4,11 @@ import { api } from '../api/axios';
 export const MovieContext = createContext({} as MovieContextProps);
 
 interface MovieContextProps {
-  nowPlayingMovies: MoviesProps[];
-  bannerMovies: MoviesProps[];
   detailMovie: DetailMovieProps | undefined;
-  similarMovies: MoviesProps[];
-  getMovies: () => void;
-  getUpcoming: () => void;
-  getDetails: (id: string) => void;
-  getSimilarMovies: (id: string) => void;
+  getMovies: () => Promise<MoviesProps[]>;
+  getUpcoming: () => Promise<MoviesProps[]>;
+  getDetails: (id: string) => Promise<DetailMovieProps>;
+  getRecommendations: (id: string) => Promise<MoviesProps[]>;
 }
 
 interface ChildrenProps {
@@ -65,9 +62,6 @@ interface getMovieProps {
 }
 
 export function MovieContextProvider({ children }: ChildrenProps) {
-  const [nowPlayingMovies, setNowPlayingMovies] = useState<MoviesProps[]>([]);
-  const [bannerMovies, setBannerMovies] = useState<MoviesProps[]>([]);
-  const [similarMovies, setSimilarMovies] = useState<MoviesProps[]>([]);
   const [detailMovie, setDetailMovie] = useState<
     DetailMovieProps | undefined
   >();
@@ -77,43 +71,45 @@ export function MovieContextProvider({ children }: ChildrenProps) {
 
     const data = resposne.data.results;
 
-    setNowPlayingMovies(data);
+    return data;
   }
 
   async function getUpcoming() {
     const response = await api.get<getMovieProps>('movie/upcoming');
     const data = response.data.results;
 
-    for (let i = 0; i < 3; i++) {
-      const randowMovie = data[Math.floor(Math.random() * data.length)];
-      setBannerMovies((state) => [...state, randowMovie]);
-    }
+    return data;
+    // for (let i = 0; i < 3; i++) {
+    //   const randowMovie = [Math.floor(Math.random() * data.length)];
+    //   return [...randowMovie, randowMovie];
+    // }
+
+    // return randowMovie;
   }
 
   async function getDetails(id: string) {
     const response = await api.get(`movie/${id}`);
 
-    setDetailMovie(response.data);
+    return response.data;
   }
 
-  async function getSimilarMovies(id: string) {
-    const response = await api.get<getMovieProps>(`movie/${id}/similar`);
+  async function getRecommendations(id: string) {
+    const response = await api.get<getMovieProps>(
+      `movie/${id}/recommendations`
+    );
 
     const data = response.data.results;
-    setSimilarMovies(data);
+    return data;
   }
 
   return (
     <MovieContext.Provider
       value={{
-        nowPlayingMovies,
-        bannerMovies,
         detailMovie,
-        similarMovies,
         getUpcoming,
         getDetails,
         getMovies,
-        getSimilarMovies,
+        getRecommendations,
       }}
     >
       {children}
