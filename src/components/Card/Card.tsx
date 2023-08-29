@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 
 import { Button } from '../Button/Button';
@@ -41,7 +41,7 @@ export function Card({ className, detail }: CardProps) {
       p-4 bg-white rounded-b-lg "
       >
         <span className="font-bold text-black">{detail.title}</span>
-        {/* <span>{detail.release_date}</span> */}
+        <span>{detail.release_date}</span>
       </div>
     </div>
   );
