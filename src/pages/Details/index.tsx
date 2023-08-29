@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Heart } from '@phosphor-icons/react';
@@ -8,23 +8,25 @@ import { useQuery } from 'react-query';
 
 export function Details() {
   const { id } = useParams();
-  const { getDetails, getRecommendations, getMovies } =
-    useContext(MovieContext);
+  const { getDetails, getRecommendations } = useContext(MovieContext);
 
-  const { data: detail } = useQuery('details', () => getDetails('569094'));
-
-  const { data: recomendations } = useQuery('recomendations', () =>
-    getRecommendations('569094')
+  const { data: detail, refetch } = useQuery('details', () =>
+    getDetails(id ? id : '')
   );
 
-  console.log(recomendations);
-  // console.log(data);
+  const { data: recomendations, refetch: refechRecomendatiion } = useQuery(
+    'recomendations',
+    () => getRecommendations(id ? id : '')
+  );
 
-  // console.log(recomendations);
+  useEffect(() => {
+    refetch();
+    refechRecomendatiion();
+  }, [id]);
 
   return (
     <>
-      <section className="contentCard pt-20 md:pt-0 md:p-12">
+      <section className="contentCard pt-20 md:pt-0 md:p-4">
         <div className="flex flex-col w-full justify-between gap-6 p-6 md:flex ">
           <div className="flex-1">
             <div className="flex relative flex-col w-full rounded-lg">
@@ -43,24 +45,23 @@ export function Details() {
                   <h3 className="mediumTitle">{detail?.title}</h3>
                 </div>
 
-                <span className="font-bold">
+                <span className="font-bold text-white">
                   Avaliação: {detail && Math.floor(detail?.vote_average)} / 10
                 </span>
               </div>
 
               <div className="flex gap-4">
-                <Button>
-                  <Link
-                    to={`https://www.youtube.com/results?search_query=${detail?.title}`}
-                    target="_blank"
-                  >
-                    Watch Trailer
-                  </Link>
-                </Button>
-
-                <Button>
-                  <Heart size={25} className="fill-white " />
-                </Button>
+                <Link
+                  to={`https://www.youtube.com/results?search_query=${detail?.title}`}
+                  target="_blank"
+                >
+                  <Button>Watch Trailer</Button>
+                </Link>
+                <div>
+                  <Button>
+                    <Heart size={25} className="fill-white " />
+                  </Button>
+                </div>
               </div>
             </div>
             <div className="flex gap-2 flex-wrap">
