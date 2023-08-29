@@ -1,12 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Filter } from '../Filter/Filter';
 import { Button } from '../Button/Button';
 import { Heart } from '@phosphor-icons/react';
-import { MovieContext, MoviesProps } from '../../context/MovieContext';
+import { MovieContext } from '../../context/MovieContext';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 
 export function Banner() {
-  const { getUpcoming, bannerMovies } = useContext(MovieContext);
+  const { getUpcoming } = useContext(MovieContext);
 
   const [index, setIndex] = useState(0);
 
@@ -19,13 +20,13 @@ export function Banner() {
   return (
     <div className="flex w-full relative items-center flex-col justify-center lg:h-auto">
       <Filter />
-      {data && (
-        <img
-          src={`https://image.tmdb.org/t/p/original${data[index]?.backdrop_path}`}
-          alt=""
-          className=" object-cover w-full min-h-[55vh] max-h-[75vh]"
-        />
-      )}
+      <img
+        src={`https://image.tmdb.org/t/p/original${
+          data && data[index]?.backdrop_path
+        }`}
+        alt=""
+        className=" object-cover w-full min-h-[55vh] max-h-[75vh]"
+      />
 
       <div className="absolute left-10 bottom-10 flex flex-col">
         {data && (
@@ -34,14 +35,18 @@ export function Banner() {
           </h3>
         )}
         <span className="text-light-gray">
-          {data && (
-            <>
-              {data[index]?.release_date} | {data[index]?.vote_average}
-            </>
-          )}
+          {data && data[index]?.release_date} |{' '}
+          {data && data[index]?.vote_average}
         </span>
         <div className="flex pt-10 gap-4">
-          <Button>Watch trailer now</Button>
+          <Link
+            to={`https://www.youtube.com/results?search_query=${
+              data && data[index]?.title
+            }`}
+            target="_blank"
+          >
+            <Button>Watch trailer now</Button>
+          </Link>
           <Button>
             <Heart size={25} className="fill-white " />
           </Button>
