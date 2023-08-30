@@ -5,7 +5,7 @@ export function Title() {
   return (
     <header className="flex items-center">
       <FilmReel className="w-12 h-12 text-red-500" />
-      <h1 className="text-3xl font-bold text-white">ReactMovie</h1>
+      <h1 className="text-3xl font-bold text-white">ReactFilm</h1>
     </header>
   );
 }
