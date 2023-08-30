@@ -41,7 +41,6 @@ export function Card({ className, detail }: CardProps) {
       p-4 bg-white rounded-b-lg "
       >
         <span className="font-bold text-black">{detail.title}</span>
-        <span>{detail.release_date}</span>
       </div>
     </div>
   );
