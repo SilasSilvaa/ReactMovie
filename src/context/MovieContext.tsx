@@ -1,5 +1,4 @@
-import React, { ReactNode, createContext, useState } from 'react';
-import { api } from '../api/axios';
+import React, { ReactNode, createContext } from 'react';
 
 export const MovieContext = createContext({} as MovieContextProps);
 
