@@ -1,10 +1,11 @@
 import React from 'react';
-import { Banner } from '../../components/Banner/Banner';
-import { Card } from '../../components/Card/Card';
-import { Button } from '../../components/Button/Button';
-import { NavLink } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { useGetAllMovies } from '../../hooks/useGetAllMovies';
+
+import { Link } from 'react-router-dom';
+import { Card } from '../../components/Card/Card';
+import { Banner } from '../../components/Banner/Banner';
+import { Button } from '../../components/Button/Button';
 
 export function Home() {
   const { data: nowPlayingMovies } = useQuery('nowPlayingMovies', () =>
@@ -33,9 +34,9 @@ export function Home() {
               ))}
             </div>
             <div className="w-full flex justify-end p-2">
-              <Button>
-                <NavLink to={'/all/trending'}>View All</NavLink>
-              </Button>
+              <Link to={'/all/trending'}>
+                <Button>View All</Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -48,9 +49,9 @@ export function Home() {
               ))}
             </div>
             <div className="w-full flex justify-end p-2">
-              <Button>
-                <NavLink to={'/all/in_high'}>View All</NavLink>
-              </Button>
+              <Link to={'/all/in_high'}>
+                <Button>View All</Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -64,9 +65,9 @@ export function Home() {
               ))}
             </div>
             <div className="w-full flex justify-end p-2">
-              <Button>
-                <NavLink to={'/all/top_films'}>View All</NavLink>
-              </Button>
+              <Link to={'/all/top_films'}>
+                <Button>View All</Button>
+              </Link>
             </div>
           </div>
         </div>
