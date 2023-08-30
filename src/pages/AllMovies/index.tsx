@@ -11,44 +11,56 @@ export function AllMovies() {
 
   return (
     <section className="flex flex-col pt-20 lg:pt-0">
-      <div className="relative pb-10">
+      <div className="relative pb-20 md:pb-10">
         <Filter />
       </div>
       <div className="flex flex-col gap-4 p-4 pt-20 items-center md:flex-row">
-        <h3 className="mediumTitle">All Movies</h3>
-        <div className="flex items-center gap-4">
-          <span className="text-center">Filter By</span>
-          <div>
-            <select name="All movies" id="allmovies">
-              <option value="All "> All</option>
-              <option value="All "> top rated</option>
-              <option value="All "> upcoming</option>
-            </select>
+        <div className="flex flex-1 items-center justify-between">
+          <h3 className="mediumTitle">All Movies</h3>
+          <div className="flex gap-4 items-center">
+            <div>
+              <select
+                name="All movies"
+                id="allmovies"
+                className="bg-red-500 text-white px-2 py-1 font-bold rounded-lg border-none
+                outline-none"
+              >
+                <option className="bg-black " value="All ">
+                  All movies
+                </option>
+                <option className="bg-black " value="Top rated ">
+                  Top Rated movies
+                </option>
+                <option className="bg-black " value="Up Coming ">
+                  Upcoming movies
+                </option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap gap-4 items-center justify-center p-4">
+      <div className="flex flex-wrap gap-4 p-4 pt-10 justify-center lg:justify-normal">
         {data?.map((movie) => (
-          <Card detail={movie} key={movie.id} className="w-64 h-64" />
+          <Card detail={movie} key={movie.id} className="w-56 h-56 text-xs" />
         ))}
       </div>
       <div className="flex gap-2 items-center justify-center py-10">
-        <div className="w-8 h-8  bg-red-500 rounded-lg flex items-center justify-center">
+        {/* <button className="w-8 h-8  bg-red-500 rounded-lg flex items-center justify-center">
           <span className="text-white font-bold">{'<'} </span>
-        </div>
-        <div className="w-8 h-8  bg-red-500 rounded-lg flex items-center justify-center ">
+        </button> */}
+        <button className="w-8 h-8  bg-red-900 rounded-lg flex items-center justify-center ">
           <span className="text-white font-bold">1</span>
-        </div>
-        <div className="w-8 h-8  bg-red-500 rounded-lg flex items-center justify-center">
+        </button>
+        <button className="w-8 h-8  bg-red-500 rounded-lg flex items-center justify-center">
           <span className="text-white font-bold">2</span>
-        </div>
-        <div className="w-8 h-8  bg-red-500 rounded-lg flex items-center justify-center">
+        </button>
+        <button className="w-8 h-8  bg-red-500 rounded-lg flex items-center justify-center">
           <span className="text-white font-bold">3</span>
-        </div>
+        </button>
 
-        <div className="w-8 h-8  bg-red-500 rounded-lg flex items-center justify-center">
+        <button className="w-8 h-8  bg-red-500 rounded-lg flex items-center justify-center">
           <span className="text-white font-bold">{'>'}</span>
-        </div>
+        </button>
       </div>
     </section>
   );
