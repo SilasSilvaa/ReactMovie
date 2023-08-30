@@ -11,7 +11,10 @@ export function Favourites() {
 
       <div className="flex  flex-col gap-4 p-4 pt-20 items-center md:items-start">
         <h3 className="mediumTitle">Favourites</h3>
-        <div className="flex flex-col flex-wrap gap-4 w-full items-center justify-center md:flex-row md:items-start md:justify-start">
+        <div
+          className="flex flex-col flex-wrap gap-4 w-full items-center justify-center
+         md:flex-row md:items-start md:justify-start"
+        >
           {/* <Card />
           <Card />
           <Card /> */}
