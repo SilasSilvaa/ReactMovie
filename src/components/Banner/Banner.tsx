@@ -5,13 +5,14 @@ import { Heart } from '@phosphor-icons/react';
 import { MovieContext } from '../../context/MovieContext';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
+import { useGetAllMovies } from '../../hooks/useGetAllMovies';
 
 export function Banner() {
-  const { getUpcoming } = useContext(MovieContext);
-
   const [index, setIndex] = useState(0);
 
-  const { data } = useQuery('bannermovies', getUpcoming);
+  const { data } = useQuery('bannermovies', () =>
+    useGetAllMovies('movie/upcoming')
+  );
 
   async function handleChangeBanner(i: number) {
     setIndex(i);

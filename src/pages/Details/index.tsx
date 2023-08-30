@@ -5,18 +5,19 @@ import { Heart } from '@phosphor-icons/react';
 import { MovieContext } from '../../context/MovieContext';
 import { Card } from '../../components/Card/Card';
 import { useQuery } from 'react-query';
+import { useGetDetails } from '../../hooks/useGetDetails';
+import { useGetAllMovies } from '../../hooks/useGetAllMovies';
 
 export function Details() {
   const { id } = useParams();
-  const { getDetails, getRecommendations } = useContext(MovieContext);
 
   const { data: detail, refetch } = useQuery('details', () =>
-    getDetails(id ? id : '')
+    useGetDetails(id ? id : '')
   );
 
   const { data: recomendations, refetch: refechRecomendatiion } = useQuery(
     'recomendations',
-    () => getRecommendations(id ? id : '')
+    () => useGetAllMovies(`movie/${id}/recommendations`)
   );
 
   useEffect(() => {
