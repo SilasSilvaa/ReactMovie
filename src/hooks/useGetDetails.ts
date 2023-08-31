@@ -28,9 +28,7 @@ interface DetailMovieProps {
 
 
 export async function useGetDetails(id: string) {
-    const response = await api.get<DetailMovieProps>(`movie/${id}`);
-
-    const data = response.data
+    const { data } = await api.get<DetailMovieProps>(`movie/${id}`);
 
     return data
 }
