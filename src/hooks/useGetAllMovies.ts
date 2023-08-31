@@ -16,9 +16,9 @@ interface apiMovieProps {
 
 export async function useGetAllMovies(params: string) {
 
-    const response = await api.get<apiMovieProps>(`${params}`)
+    const { data } = await api.get<apiMovieProps>(`${params}`)
 
-    const data = response.data.results
+    const results = data.results
 
-    return data
+    return results
 } 
