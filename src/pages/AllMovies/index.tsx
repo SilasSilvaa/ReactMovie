@@ -39,7 +39,7 @@ export function AllMovies() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap gap-4 p-4 pt-10 justify-center lg:justify-normal">
+      <div className="flex flex-wrap gap-4 p-4 pt-10 justify-center">
         {data?.map((movie) => (
           <Card detail={movie} key={movie.id} className="w-56 h-56 text-xs" />
         ))}
