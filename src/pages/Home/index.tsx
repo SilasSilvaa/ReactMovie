@@ -23,7 +23,9 @@ export function Home() {
   return (
     <>
       <section className="flex flex-col gap-4 pt-20 lg:pt-0">
-        <Banner />
+        <div className="p-4 ">
+          {upComingMovies && <Banner data={upComingMovies} isFilter />}
+        </div>
 
         <div className="containerCard">
           <p className="mediumTitle">Upcoming</p>
