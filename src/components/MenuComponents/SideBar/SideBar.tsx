@@ -15,10 +15,13 @@ export function SideBar() {
   const [userLog, setUserLog] = useState(true);
 
   return (
-    <div className="hidden py-4 px-2 items-center flex-col bg-black lg:flex border-r-2 border-red-500">
-      <div className="flex flex-col gap-6 flex-1 rounded-md lg:p-2">
-        <FilmReel className="text-red-500 w-10 h-10 " />
-        <div className="flex flex-col gap-6 pt-12 flex-1">
+    <div
+      className="hidden p-2 items-center flex-col bg-[#282726] lg:flex 
+      rounded-lg"
+    >
+      <div className="flex flex-col gap-6 flex-1 rounded-md">
+        <FilmReel className="text-red-500 w-10 h-10" />
+        <div className="flex flex-col items-center gap-6 pt-14 flex-1">
           <NavLink
             to="/"
             className={`textCss ${
@@ -30,7 +33,7 @@ export function SideBar() {
           <NavLink
             to="/favourites"
             className={`textCss ${
-              pathname === '/favoutites' ? 'text-red-500' : 'text-white'
+              pathname === '/favourites' ? 'text-red-500' : 'text-white'
             }`}
           >
             <Heart className="svgCss" />
@@ -60,13 +63,13 @@ export function SideBar() {
                   pathname === '/profile' ? 'text-red-500' : 'text-white'
                 }`}
               >
-                <UserCircle size={40} className="svgCss" />
+                <UserCircle size={40} className="svgCss " />
               </NavLink>
             </>
           )}
         </div>
-        <div>
-          <SignOut className="svgCss" />
+        <div className="flex justify-center">
+          <SignOut className="svgCss text-white" />
         </div>
       </div>
     </div>
