@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useGetAllMovies } from '../../hooks/useGetAllMovies';
-
 import { Filter } from '../Filter/Filter';
 import { Button } from '../Button/Button';
 import { Heart } from '@phosphor-icons/react';
