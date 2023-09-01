@@ -2,6 +2,15 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Menu } from '../../components/MenuComponents/Menu/Menu';
 import { HamburgerMenu } from '../../components/MenuComponents/HamburgerMenu/HamburgerMenu';
+import {
+  ChatsCircle,
+  FilmReel,
+  FilmSlate,
+  Heart,
+  SignOut,
+  TrendUp,
+  UserCircle,
+} from '@phosphor-icons/react';
 
 export function Layout() {
   return (
