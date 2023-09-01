@@ -1,18 +1,20 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import { useGetAllMovies } from '../../hooks/useGetAllMovies';
+
 import { Filter } from '../Filter/Filter';
 import { Button } from '../Button/Button';
 import { Heart } from '@phosphor-icons/react';
-import { MovieContext } from '../../context/MovieContext';
-import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
-import { useGetAllMovies } from '../../hooks/useGetAllMovies';
 
-export function Banner() {
+import { MoviesProps } from '../../context/MovieContext';
+
+interface BannerProps {
+  isFilter?: boolean;
+  data: MoviesProps[];
+}
+
+export function Banner({ isFilter, data }: BannerProps) {
   const [index, setIndex] = useState(0);
-
-  const { data } = useQuery('bannermovies', () =>
-    useGetAllMovies('movie/upcoming')
-  );
 
   async function handleChangeBanner(i: number) {
     setIndex(i);
@@ -20,13 +22,13 @@ export function Banner() {
 
   return (
     <div className="flex w-full relative items-center flex-col justify-center lg:h-auto">
-      <Filter />
+      {isFilter && <Filter />}
       <img
         src={`https://image.tmdb.org/t/p/original${
           data && data[index]?.backdrop_path
         }`}
         alt=""
-        className=" object-cover w-full min-h-[55vh] max-h-[75vh]"
+        className="object-cover w-full min-h-[55vh] max-h-[75vh] rounded-lg"
       />
 
       <div className="absolute left-10 bottom-10 flex flex-col">
