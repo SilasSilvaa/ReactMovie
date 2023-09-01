@@ -23,7 +23,7 @@ export function Home() {
   return (
     <>
       <section className="flex flex-col gap-4 pt-20 lg:pt-0">
-        <div className="p-4 ">
+        <div className="p-2">
           {upComingMovies && <Banner data={upComingMovies} isFilter />}
         </div>
 
