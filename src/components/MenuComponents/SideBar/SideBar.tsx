@@ -8,7 +8,7 @@ import {
   SignOut,
 } from '@phosphor-icons/react';
 import React, { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 export function SideBar() {
   const { pathname } = useLocation();
@@ -20,7 +20,9 @@ export function SideBar() {
       rounded-lg"
     >
       <div className="flex flex-col gap-6 flex-1 rounded-md">
-        <FilmReel className="text-red-500 w-10 h-10" />
+        <Link to={'/'}>
+          <FilmReel className="text-red-500 w-10 h-10" />
+        </Link>
         <div className="flex flex-col items-center gap-6 pt-14 flex-1">
           <NavLink
             to="/"
