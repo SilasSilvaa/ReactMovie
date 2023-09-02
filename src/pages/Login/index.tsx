@@ -9,10 +9,16 @@ export function Login() {
       <Link to={'/'}>
         <ArrowCircleLeft className="w-10 h-10 text-white absolute top-5 left-5 z-50" />
       </Link>
-      <div className="hidden relative items-center flex-col flex-1 lg:flex">
-        <img src="/src/assets/banner.jpg" alt="" className="w-full h-full" />
-        <div className="flex items-center gap-2 flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-          <h2 className="text-4xl text-white font-bold text-center">
+      {/* Imagem lateral */}
+      <div
+        className="hidden relative items-center flex-col w-3/5 bg-gradient-to-r 
+      from-red-500 via-red-800 lg:flex"
+      >
+        <div
+          className="flex items-center gap-2 flex-col absolute top-1/2 left-1/2 transform 
+        -translate-x-1/2 -translate-y-1/2 "
+        >
+          <h2 className="text-5xl text-white font-bold text-center">
             Welcome back
           </h2>
           <span className="text-xl text-white text-center">
@@ -20,12 +26,15 @@ export function Login() {
           </span>
         </div>
       </div>
-      <div className="flex items-center justify-center flex-col gap-6 flex-1 p-4">
+      <div className="flex items-center justify-center flex-col gap-6 p-4 w-4/5 lg:w-2/5">
         <h2 className="text-2xl text-white font-bold p-6 text-center lg:hidden ">
           Log-in in your account
         </h2>
-        <div className="w-full flex flex-col items-center p-6 gap-8 bg-black border-2 border-red-500 rounded-xl lg:max-w-2xl">
-          <form action="submit" className="flex flex-col w-full gap-4">
+        <div
+          className="w-full flex flex-col items-center p-6 gap-8 bg-black border-2 
+        border-red-500 rounded-xl lg:max-w-2xl"
+        >
+          <form action="submit" className="flex flex-col w-full gap-2">
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="  text-white font-bold">
                 Email:
