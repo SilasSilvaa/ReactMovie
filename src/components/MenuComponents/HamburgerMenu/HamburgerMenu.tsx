@@ -11,11 +11,12 @@ export function HamburgerMenu() {
 
   return (
     <>
-      <div className="fixed w-full flex flex-col z-30 lg:hidden">
-        <div className="flex items-center p-4 justify-between bg-black">
+      <div className="fixed w-full flex flex-col z-30 lg:hidden p-2 gap-1">
+        <div className="flex items-center p-4 justify-between bg-[#282726] rounded-lg">
           <Header />
           <div
-            className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-black cursor-pointer"
+            className="flex items-center justify-center w-10 h-10 rounded-full border-2 
+            border-white bg-black cursor-pointer"
             onClick={openMenu}
           >
             {toggleMenu ? (
@@ -26,7 +27,7 @@ export function HamburgerMenu() {
           </div>
         </div>
         {toggleMenu && (
-          <div className="h-screen bg-black">
+          <div className="h-screen bg-[#282726] rounded-lg">
             <MenuOptions />
           </div>
         )}
