@@ -98,7 +98,7 @@ export function Details() {
           </div>
 
           <div className="flex flex-col items-center justify-center gap-6">
-            <span className="mediumTitle text-center pt-10 md:text-start">
+            <span className="mediumTitle pt-10 md:text-start">
               Similar movies
             </span>
 
