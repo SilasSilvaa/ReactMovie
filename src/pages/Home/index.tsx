@@ -10,26 +10,29 @@ import { BannerSkeleton } from '../../components/SkeletonComponents/BannerSkelet
 import { CardSkeleton } from '../../components/SkeletonComponents/CardSkeleton/CardSkeleton';
 
 export function Home() {
-  const { data: nowPlayingMovies, isLoading: isLoagingNowPlaying } = useQuery(
-    'nowPlayingMovies',
-    () => useGetAllMovies('movie/now_playing')
-  );
+  const {
+    data: nowPlayingMovies,
+    isLoading: isLoagingNowPlaying,
+    isRefetching: isRefetchingNowPlaying,
+  } = useQuery('nowPlayingMovies', () => useGetAllMovies('movie/now_playing'));
 
-  const { data: upComingMovies, isLoading: isLoagingUpComing } = useQuery(
-    'upComingMovies',
-    () => useGetAllMovies('movie/upcoming')
-  );
+  const {
+    data: upComingMovies,
+    isLoading: isLoagingUpComing,
+    isRefetching: isRefetchingUpComing,
+  } = useQuery('upComingMovies', () => useGetAllMovies('movie/upcoming'));
 
-  const { data: topRatedMovies, isLoading: isLoadingTopRated } = useQuery(
-    'topRatedMovies',
-    () => useGetAllMovies('movie/top_rated')
-  );
+  const {
+    data: topRatedMovies,
+    isLoading: isLoadingTopRated,
+    isRefetching: isRefetchingTopRated,
+  } = useQuery('topRatedMovies', () => useGetAllMovies('movie/top_rated'));
 
   return (
     <>
       <section className="flex flex-col gap-4 pt-20 lg:pt-0">
         <div className="p-2 ">
-          {isLoagingUpComing ? (
+          {isLoagingUpComing || isRefetchingNowPlaying ? (
             <BannerSkeleton />
           ) : (
             upComingMovies && <Banner data={upComingMovies} isFilter />
@@ -39,7 +42,7 @@ export function Home() {
           <p className="mediumTitle">Upcoming</p>
           <div className="contentCard">
             <div className="carousel max-w-full gap-6 rounded-box">
-              {isLoagingUpComing ? (
+              {isLoagingUpComing || isRefetchingUpComing ? (
                 <>
                   <CardSkeleton />
                   <CardSkeleton />
@@ -68,7 +71,7 @@ export function Home() {
           <p className="mediumTitle">Now playing</p>
           <div className="contentCard">
             <div className="carousel max-w-full gap-6 rounded-box">
-              {isLoagingNowPlaying ? (
+              {isLoagingNowPlaying || isRefetchingNowPlaying ? (
                 <>
                   <CardSkeleton />
                   <CardSkeleton />
@@ -98,7 +101,7 @@ export function Home() {
           <p className="mediumTitle">Top films</p>
           <div className="contentCard">
             <div className="carousel max-w-full gap-6 rounded-box">
-              {isLoadingTopRated ? (
+              {isLoadingTopRated || isRefetchingTopRated ? (
                 <>
                   <CardSkeleton />
                   <CardSkeleton />
