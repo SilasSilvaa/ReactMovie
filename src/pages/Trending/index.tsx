@@ -11,7 +11,7 @@ export function Trending() {
 
   return (
     <section className="flex flex-col pt-20 lg:pt-0">
-      <div className="flex  flex-col gap-4 p-4 justify-center items-center md:items-start">
+      <div className="flex  flex-col gap-4 p-2 justify-center items-center md:items-start">
         <div className="flex flex-col w-full gap-6 flex-wrap md:flex md:flex-row ">
           {data && <Banner data={data} />}
           <h3 className="mediumTitle py-5">Trending movies</h3>
