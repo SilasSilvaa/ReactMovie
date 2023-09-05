@@ -1,27 +1,33 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Heart } from '@phosphor-icons/react';
-import { MovieContext } from '../../context/MovieContext';
 import { Card } from '../../components/Card/Card';
 import { useQuery } from 'react-query';
 import { useGetDetails } from '../../hooks/useGetDetails';
 import { useGetAllMovies } from '../../hooks/useGetAllMovies';
+import { BannerSkeleton } from '../../components/SkeletonComponents/BannerSkeleton/BannerSkeleton';
+import { CardSkeleton } from '../../components/SkeletonComponents/CardSkeleton/CardSkeleton';
 
 export function Details() {
   const { id } = useParams();
 
-  const { data: detail, refetch } = useQuery('details', () =>
-    useGetDetails(id ? id : '')
-  );
+  const {
+    data: detail,
+    refetch: refechaDetails,
+    isLoading: isLoadingDetails,
+  } = useQuery('details', () => useGetDetails(id ? id : ''));
 
-  const { data: recomendations, refetch: refechRecomendatiion } = useQuery(
-    'recomendations',
-    () => useGetAllMovies(`movie/${id}/recommendations`)
+  const {
+    data: recomendations,
+    refetch: refechRecomendatiion,
+    isLoading: isLoadingRecomendations,
+  } = useQuery('recomendations', () =>
+    useGetAllMovies(`movie/${id}/recommendations`)
   );
 
   useEffect(() => {
-    refetch();
+    refechaDetails();
     refechRecomendatiion();
   }, [id]);
 
@@ -31,11 +37,15 @@ export function Details() {
         <div className="flex flex-col w-full justify-between gap-6 p-6 md:flex ">
           <div className="flex-1">
             <div className="flex relative flex-col w-full rounded-lg">
-              <img
-                src={`https://image.tmdb.org/t/p/original/${detail?.backdrop_path}`}
-                alt=""
-                className="max-h-[75vh] object-cover rounded-lg cursor-pointer"
-              />
+              {isLoadingDetails ? (
+                <BannerSkeleton contents={false} />
+              ) : (
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${detail?.backdrop_path}`}
+                  alt=""
+                  className="max-h-[75vh] object-cover rounded-lg cursor-pointer"
+                />
+              )}
             </div>
           </div>
 
@@ -103,13 +113,23 @@ export function Details() {
             </span>
 
             <div className=" carousel max-w-full gap-6 rounded-box">
-              {recomendations?.map((similarMovie) => (
-                <Card
-                  detail={similarMovie}
-                  key={similarMovie.id}
-                  className="carousel-item"
-                />
-              ))}
+              {isLoadingDetails ? (
+                <>
+                  <CardSkeleton />
+                  <CardSkeleton />
+                  <CardSkeleton />
+                  <CardSkeleton />
+                  <CardSkeleton />
+                </>
+              ) : (
+                recomendations?.map((similarMovie) => (
+                  <Card
+                    detail={similarMovie}
+                    key={similarMovie.id}
+                    className="carousel-item"
+                  />
+                ))
+              )}
             </div>
           </div>
         </div>
