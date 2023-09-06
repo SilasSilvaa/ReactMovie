@@ -1,27 +1,45 @@
-import React, { ReactNode, createContext } from 'react';
+import React, { ReactNode, createContext, useState } from 'react';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { auth } from '../firebase/firebase';
 
 export const MovieContext = createContext({} as MovieContextProps);
 
-interface MovieContextProps {}
+interface MovieContextProps {
+  registerNewUser: (email: string, password: string, name: string) => void;
+}
 
 interface ChildrenProps {
   children: ReactNode;
 }
 
-export interface MoviesProps {
-  id: string;
-  title?: string;
-  name?: string;
-  poster_path?: string;
-  logo_path?: string;
-  backdrop_path?: string;
-  release_date?: string;
-  vote_average?: number;
-}
-
 export function MovieContextProvider({ children }: ChildrenProps) {
-  {
+  // const auth = getAuth();
+
+  const [user, setUser] = useState({});
+
+  async function registerNewUser(
+    email: string,
+    password: string,
+    name: string
+  ) {
+    console.log('Teste');
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((res) => {
+        console.log('Cadastrado com sucesso');
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log('Erro ao cadastrar', err);
+      });
   }
 
-  return <MovieContext.Provider value={{}}>{children}</MovieContext.Provider>;
+  return (
+    <MovieContext.Provider
+      value={{
+        registerNewUser,
+      }}
+    >
+      {children}
+    </MovieContext.Provider>
+  );
 }
