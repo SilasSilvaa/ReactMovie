@@ -1,11 +1,30 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
-import { ArrowCircleLeft, ArrowLeft } from '@phosphor-icons/react';
+import { ArrowCircleLeft } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
+import { MovieContext } from '../../context/MovieContext';
 
 export function Register() {
-  const [passwordInputValue, setPasswordInputValue] = useState('');
+  const [nameInput, setNameInput] = useState('');
+  const [emailInput, setEmailInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const { registerNewUser } = useContext(MovieContext);
+
+  function handleRegister(
+    email: string,
+    password: string,
+    name: string,
+    event
+  ) {
+    event.preventDefault();
+
+    if (email && password && name && password === confirmPassword) {
+      registerNewUser(email, password, name);
+    }
+  }
 
   return (
     <section className=" w-full h-full relative bg-black flex justify-center">
@@ -37,18 +56,34 @@ export function Register() {
           className="w-full flex flex-col items-center p-6 gap-8 bg-black border-2 
         border-red-500 rounded-xl lg:max-w-2xl"
         >
-          <form action="submit" className="flex flex-col w-full gap-2">
+          <form
+            action="submit"
+            className="flex flex-col w-full gap-2"
+            onSubmit={(event) =>
+              handleRegister(emailInput, passwordInput, nameInput, event)
+            }
+          >
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="  text-white font-bold">
                 Name:
               </label>
-              <Input type="text" placeholder="write your e-mail" />
+              <Input
+                type="text"
+                value={nameInput}
+                onChange={(e) => setNameInput(e.target.value)}
+                placeholder="write your e-mail"
+              />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="  text-white font-bold">
                 Email:
               </label>
-              <Input type="text" placeholder="write your e-mail" />
+              <Input
+                type="text"
+                value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+                placeholder="write your e-mail"
+              />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="  text-white font-bold">
@@ -56,17 +91,22 @@ export function Register() {
               </label>
               <Input
                 type="password"
-                value={passwordInputValue}
-                onChange={(e) => setPasswordInputValue(e.target.value)}
+                value={passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
                 placeholder="write your password"
               />
             </div>
-            {passwordInputValue && (
+            {passwordInput && (
               <div className="flex flex-col gap-2">
                 <label htmlFor="" className="  text-white font-bold">
                   Confirm your password:
                 </label>
-                <Input type="password" placeholder="write your password" />
+                <Input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="write your password"
+                />
               </div>
             )}
 
@@ -82,7 +122,7 @@ export function Register() {
                   Don't have account? Register
                 </Link>
               </div>
-              <Button>Login</Button>
+              <Button type="submit">Cadastrar</Button>
             </div>
           </form>
         </div>
