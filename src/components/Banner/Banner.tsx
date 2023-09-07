@@ -3,8 +3,7 @@ import { Filter } from '../Filter/Filter';
 import { Button } from '../Button/Button';
 import { Heart } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
-
-import { MoviesProps } from '../../context/MovieContext';
+import { MoviesProps } from '../../Interfaces/IMoviesProps';
 
 interface BannerProps {
   isFilter?: boolean;
@@ -21,13 +20,16 @@ export function Banner({ isFilter, data }: BannerProps) {
   return (
     <div className="flex w-full relative items-center flex-col justify-center lg:h-auto">
       {isFilter && <Filter />}
-      <img
-        src={`https://image.tmdb.org/t/p/original${
-          data && data[index]?.backdrop_path
-        }`}
-        alt=""
-        className="object-cover w-full min-h-[55vh] max-h-[75vh] rounded-lg"
-      />
+
+      <Link className="flex w-full" to={`/details/${data[index].id}`}>
+        <img
+          src={`https://image.tmdb.org/t/p/original${
+            data && data[index]?.backdrop_path
+          }`}
+          alt=""
+          className="object-cover w-full min-h-[55vh] max-h-[75vh] rounded-lg"
+        />
+      </Link>
 
       <div className="absolute left-10 bottom-10 flex flex-col">
         {data && (
