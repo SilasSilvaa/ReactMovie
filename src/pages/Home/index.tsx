@@ -33,7 +33,7 @@ export function Home() {
       <section className="flex flex-col gap-4 pt-20 lg:pt-0">
         <div className="p-2 ">
           {isLoagingUpComing || isRefetchingNowPlaying ? (
-            <BannerSkeleton />
+            <BannerSkeleton contents />
           ) : (
             upComingMovies && <Banner data={upComingMovies} isFilter />
           )}
