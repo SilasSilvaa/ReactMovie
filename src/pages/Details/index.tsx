@@ -37,13 +37,18 @@ export function Details() {
         <div className="flex flex-col w-full justify-between gap-6 p-6 md:flex ">
           <div className="flex-1">
             <div className="flex relative flex-col w-full rounded-lg">
+              <div className="absolute top-2 left-2">
+                <Link to={'/'}>
+                  <Button className="px-4 py-2">Voltar</Button>
+                </Link>
+              </div>
               {isLoadingDetails ? (
                 <BannerSkeleton contents={false} />
               ) : (
                 <img
                   src={`https://image.tmdb.org/t/p/original/${detail?.backdrop_path}`}
                   alt=""
-                  className="max-h-[75vh] object-cover rounded-lg cursor-pointer"
+                  className="max-h-[75vh] object-cover rounded-lg"
                 />
               )}
             </div>
