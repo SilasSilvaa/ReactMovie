@@ -16,15 +16,13 @@ export function Details() {
     data: detail,
     refetch: refechaDetails,
     isLoading: isLoadingDetails,
-  } = useQuery('details', () => useGetDetails(id ? id : ''));
+  } = useGetDetails('details', `movie/${id}`);
 
   const {
     data: recomendations,
     refetch: refechRecomendatiion,
     isLoading: isLoadingRecomendations,
-  } = useQuery('recomendations', () =>
-    useGetAllMovies(`movie/${id}/recommendations`)
-  );
+  } = useGetAllMovies('recomendations', `movie/${id}/recommendations`);
 
   useEffect(() => {
     refechaDetails();
@@ -118,7 +116,7 @@ export function Details() {
             </span>
 
             <div className=" carousel max-w-full gap-6 rounded-box">
-              {isLoadingDetails ? (
+              {isLoadingRecomendations ? (
                 <>
                   <CardSkeleton />
                   <CardSkeleton />
