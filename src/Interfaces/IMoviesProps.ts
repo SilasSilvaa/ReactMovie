@@ -9,7 +9,7 @@ export interface MoviesProps {
     vote_average?: number;
 }
 
-export interface apiMovieProps {
+export interface ApiMovieProps {
     dates: {
         maximum: string;
         minimum: string;
