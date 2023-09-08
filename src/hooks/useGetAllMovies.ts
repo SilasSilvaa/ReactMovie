@@ -1,12 +1,13 @@
-import { apiMovieProps } from "../Interfaces/IMoviesProps";
+import { useQuery } from 'react-query'
 import { api } from "../api/axios"
+import { ApiMovieProps } from "../Interfaces/IMoviesProps";
 
+export function useGetAllMovies(saveData: string, movieSearch: string) {
+    return useQuery(saveData, async () => {
+        const { data } = await api.get<ApiMovieProps>(movieSearch);
 
-export async function useGetAllMovies(params: string) {
+        const dataMovies = data.results;
 
-    const { data } = await api.get<apiMovieProps>(`${params}`)
-
-    const results = data.results
-
-    return results
+        return dataMovies;
+    });
 } 
