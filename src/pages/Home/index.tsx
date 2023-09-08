@@ -1,5 +1,4 @@
 import React from 'react';
-import { useQuery } from 'react-query';
 import { useGetAllMovies } from '../../hooks/useGetAllMovies';
 
 import { Link } from 'react-router-dom';
@@ -14,19 +13,19 @@ export function Home() {
     data: nowPlayingMovies,
     isLoading: isLoagingNowPlaying,
     isRefetching: isRefetchingNowPlaying,
-  } = useQuery('nowPlayingMovies', () => useGetAllMovies('movie/now_playing'));
+  } = useGetAllMovies('nowPlayingMovies', 'movie/now_playing');
 
   const {
     data: upComingMovies,
     isLoading: isLoagingUpComing,
     isRefetching: isRefetchingUpComing,
-  } = useQuery('upComingMovies', () => useGetAllMovies('movie/upcoming'));
+  } = useGetAllMovies('upComingMovies', 'movie/upcoming');
 
   const {
     data: topRatedMovies,
     isLoading: isLoadingTopRated,
     isRefetching: isRefetchingTopRated,
-  } = useQuery('topRatedMovies', () => useGetAllMovies('movie/top_rated'));
+  } = useGetAllMovies('topRatedMovies', 'movie/top_rated');
 
   return (
     <>
