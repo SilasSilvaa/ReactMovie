@@ -5,9 +5,7 @@ import { useQuery } from 'react-query';
 import { useGetAllMovies } from '../../hooks/useGetAllMovies';
 
 export function Favourites() {
-  const { data } = useQuery('favourites', () =>
-    useGetAllMovies('movie/now_playing')
-  );
+  const { data } = useGetAllMovies('favourites', 'movie/now_playing');
 
   return (
     <section className="flex flex-col pt-20 lg:pt-0">

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useQuery } from 'react-query';
 import { useGetAllMovies } from '../../hooks/useGetAllMovies';
 import { Card } from '../../components/Card/Card';
 import { Banner } from '../../components/Banner/Banner';
@@ -7,7 +6,7 @@ import { BannerSkeleton } from '../../components/SkeletonComponents/BannerSkelet
 
 export function Trending() {
   const { data: dataTrendingMovies, isLoading: isLoadingTrendingMovies } =
-    useQuery('trendingMovies', () => useGetAllMovies('movie/popular'));
+    useGetAllMovies('trendingMovies', 'movie/popular');
 
   return (
     <section className="flex flex-col pt-20 lg:pt-0">
