@@ -1,5 +1,5 @@
 import React, { ReactNode, createContext, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 
 export const MovieContext = createContext({} as MovieContextProps);
@@ -13,8 +13,6 @@ interface ChildrenProps {
 }
 
 export function MovieContextProvider({ children }: ChildrenProps) {
-  // const auth = getAuth();
-
   const [user, setUser] = useState({});
 
   async function registerNewUser(

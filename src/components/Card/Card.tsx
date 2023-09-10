@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 import { Button } from '../Button/Button';
 import { Heart } from '@phosphor-icons/react';
-import { MoviesProps } from '../../context/MovieContext';
+import { MoviesProps } from '../../Interfaces/IMoviesProps';
 
 interface CardProps {
   detail: MoviesProps;

@@ -1,13 +1,10 @@
 import React from 'react';
 import { Filter } from '../../components/Filter/Filter';
-import { useQuery } from 'react-query';
 import { useGetAllMovies } from '../../hooks/useGetAllMovies';
 import { Card } from '../../components/Card/Card';
 
 export function AllMovies() {
-  const { data } = useQuery('nowPlayingMovies', () =>
-    useGetAllMovies('movie/now_playing')
-  );
+  const { data } = useGetAllMovies('nowPlayingMovies', 'movie/now_playing');
 
   return (
     <section className="flex flex-col pt-20 lg:pt-0">

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Filter } from '../../components/Filter/Filter';
 import { Card } from '../../components/Card/Card';
-import { useQuery } from 'react-query';
 import { useGetAllMovies } from '../../hooks/useGetAllMovies';
 
 export function Favourites() {

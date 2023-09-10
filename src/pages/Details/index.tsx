@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Heart } from '@phosphor-icons/react';
 import { Card } from '../../components/Card/Card';
-import { useQuery } from 'react-query';
 import { useGetDetails } from '../../hooks/useGetDetails';
 import { useGetAllMovies } from '../../hooks/useGetAllMovies';
 import { BannerSkeleton } from '../../components/SkeletonComponents/BannerSkeleton/BannerSkeleton';
