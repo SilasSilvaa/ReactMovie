@@ -8,7 +8,6 @@ interface BannerSkeletonProps {
 export function BannerSkeleton({ contents }: BannerSkeletonProps) {
   return (
     <div className="flex w-full relative items-center flex-col justify-center lg:h-auto">
-      {/* {isFilter && <Filter />} */}
       <div className="flex w-full h-[70vh] rounded-lg bg-[#282726] animate-pulse"></div>
 
       {contents && (
