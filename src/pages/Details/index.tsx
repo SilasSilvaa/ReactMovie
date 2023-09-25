@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Heart } from '@phosphor-icons/react';
 import { Card } from '../../components/Card/Card';
 import { useGetDetails } from '../../hooks/useGetDetails';
-import { useGetAllMovies } from '../../hooks/useGetAllMovies';
 import { BannerSkeleton } from '../../components/SkeletonComponents/BannerSkeleton/BannerSkeleton';
-import { CardSkeleton } from '../../components/SkeletonComponents/CardSkeleton/CardSkeleton';
+import { useGetAllMovies } from '../../hooks/useGetAllMovies';
+import { MoviesProps } from '../../Interfaces/IMoviesProps';
 
 export function Details() {
   const { id } = useParams();
+  const sessionData = sessionStorage.getItem('upComingMovies');
+  const upComingMovies: MoviesProps[] = sessionData && JSON.parse(sessionData);
+  const bannerRef = useRef<HTMLDivElement | null>(null);
 
   const {
     data: detail,
@@ -17,22 +20,20 @@ export function Details() {
     isLoading: isLoadingDetails,
   } = useGetDetails('details', `movie/${id}`);
 
-  const {
-    data: recomendations,
-    refetch: refechRecomendatiion,
-    isLoading: isLoadingRecomendations,
-  } = useGetAllMovies('recomendations', `movie/${id}/recommendations`);
+  const { data: recomendations, refetch: refechRecomendatiion } =
+    useGetAllMovies('recomendations', `movie/${id}/recommendations`);
 
   useEffect(() => {
     refechaDetails();
     refechRecomendatiion();
+    bannerRef?.current?.focus();
   }, [id]);
 
   return (
     <>
       <section className="contentCard pt-20 md:pt-0 md:p-4">
         <div className="flex flex-col w-full justify-between gap-6 p-6 md:flex ">
-          <div className="flex-1">
+          <div className="flex-1 outline-none" ref={bannerRef} tabIndex={0}>
             <div className="flex relative flex-col w-full rounded-lg">
               <div className="absolute top-2 left-2">
                 <Link to={'/'}>
@@ -41,6 +42,18 @@ export function Details() {
               </div>
               {isLoadingDetails ? (
                 <BannerSkeleton contents={false} />
+              ) : detail?.backdrop_path === null ? (
+                <>
+                  <span className="absolute top-[50%] left-[45%]">
+                    {' '}
+                    This movie no has image
+                  </span>
+                  <img
+                    src={'/src/assets/notImageMovie.jpg'}
+                    alt=""
+                    className="max-h-[75vh] object-cover rounded-lg"
+                  />
+                </>
               ) : (
                 <img
                   src={`https://image.tmdb.org/t/p/original/${detail?.backdrop_path}`}
@@ -58,9 +71,15 @@ export function Details() {
                   <h3 className="mediumTitle">{detail?.title}</h3>
                 </div>
 
-                <span className="font-bold text-white">
-                  Avaliação: {detail && Math.floor(detail?.vote_average)} / 10
-                </span>
+                {detail?.vote_average === 0 ? (
+                  <span className="font-bold text-white">
+                    This movie has no reviews
+                  </span>
+                ) : (
+                  <span className="font-bold text-white">
+                    Rating: {detail && Math.floor(detail?.vote_average)} / 10
+                  </span>
+                )}
               </div>
 
               <div className="flex gap-4">
@@ -97,41 +116,42 @@ export function Details() {
             <div className="flex flex-col gap-4">
               <span className="text-white font-bold text-xl">Created By</span>
               <div className="flex gap-4 flex-wrap  max-w-3xl">
-                {detail?.production_companies?.map((company) => (
-                  <span
-                    key={company.id}
-                    className="font-bold text-white text-center p-2 bg-red-500 rounded-lg "
-                  >
-                    {company.name}
-                  </span>
-                ))}
+                {detail?.production_companies?.length === 0 ? (
+                  <span>No creator of this movie found</span>
+                ) : (
+                  detail?.production_companies?.map((company) => (
+                    <span
+                      key={company.id}
+                      className="font-bold text-white text-center p-2 bg-red-500 rounded-lg "
+                    >
+                      {company.name}
+                    </span>
+                  ))
+                )}
               </div>
             </div>
           </div>
 
           <div className="flex flex-col items-center justify-center gap-6">
             <span className="mediumTitle pt-10 md:text-start">
-              Similar movies
+              {recomendations?.length === 0 ? 'Upcoming' : 'Similar movies'}
             </span>
-
             <div className=" carousel max-w-full gap-6 rounded-box">
-              {isLoadingRecomendations ? (
-                <>
-                  <CardSkeleton />
-                  <CardSkeleton />
-                  <CardSkeleton />
-                  <CardSkeleton />
-                  <CardSkeleton />
-                </>
-              ) : (
-                recomendations?.map((similarMovie) => (
-                  <Card
-                    detail={similarMovie}
-                    key={similarMovie.id}
-                    className="carousel-item"
-                  />
-                ))
-              )}
+              {recomendations?.length === 0
+                ? upComingMovies.map((upComingMoive) => (
+                    <Card
+                      detail={upComingMoive}
+                      key={upComingMoive.id}
+                      className="carousel-item"
+                    />
+                  ))
+                : recomendations?.map((similarMovie) => (
+                    <Card
+                      detail={similarMovie}
+                      key={similarMovie.id}
+                      className="carousel-item"
+                    />
+                  ))}
             </div>
           </div>
         </div>
