@@ -14,6 +14,7 @@ export default {
         purple: '#6100C2',
         black: '#191817',
         gray: '#969696',
+        darkGray: '#282726',
         'light-gray': '#B0A4FD',
         'light-purple': '#7900C2',
       },
