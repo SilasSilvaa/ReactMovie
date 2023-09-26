@@ -31,10 +31,14 @@ export function Details() {
 
   return (
     <>
-      <section className="contentCard pt-20 md:pt-0 md:p-4">
-        <div className="flex flex-col w-full justify-between gap-6 p-6 md:flex ">
-          <div className="flex-1 outline-none" ref={bannerRef} tabIndex={0}>
-            <div className="flex relative flex-col w-full rounded-lg">
+      <section className="contentCard pt-24 lg:pt-0">
+        <div className="flex flex-col w-full justify-between gap-6 md:flex ">
+          <div
+            className="flex-1 outline-none md:p-2"
+            ref={bannerRef}
+            tabIndex={0}
+          >
+            <div className="flex relative flex-col">
               <div className="absolute top-2 left-2">
                 <Link to={'/'}>
                   <Button className="px-4 py-2">Voltar</Button>
@@ -44,7 +48,7 @@ export function Details() {
                 <BannerSkeleton contents={false} />
               ) : detail?.backdrop_path === null ? (
                 <>
-                  <span className="absolute top-[50%] left-[45%]">
+                  <span className="absolute top-[50%] left-[45%] text-white">
                     {' '}
                     This movie no has image
                   </span>
@@ -58,13 +62,13 @@ export function Details() {
                 <img
                   src={`https://image.tmdb.org/t/p/original/${detail?.backdrop_path}`}
                   alt=""
-                  className="max-h-[75vh] object-cover rounded-lg"
+                  className="object-cover h-[70vh] md:rounded-lg"
                 />
               )}
             </div>
           </div>
 
-          <div className="flex flex-col justify-center flex-1 gap-6">
+          <div className="flex flex-col justify-center flex-1 gap-6 p-4">
             <div className="w-full flex justify-between flex-wrap gap-6">
               <div className="flex flex-col gap-1">
                 <div>
@@ -115,7 +119,7 @@ export function Details() {
             </div>
             <div className="flex flex-col gap-4">
               <span className="text-white font-bold text-xl">Created By</span>
-              <div className="flex gap-4 flex-wrap  max-w-3xl">
+              <div className="flex gap-4 flex-wrap max-w-3xl">
                 {detail?.production_companies?.length === 0 ? (
                   <span>No creator of this movie found</span>
                 ) : (
@@ -132,7 +136,7 @@ export function Details() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-6">
+          <div className="flex flex-col items-center justify-center gap-6 p-4">
             <span className="mediumTitle pt-10 md:text-start">
               {recomendations?.length === 0 ? 'Upcoming' : 'Similar movies'}
             </span>

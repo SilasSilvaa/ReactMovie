@@ -6,7 +6,7 @@ export function Menu() {
   return (
     <>
       <aside className=" hidden flex-1 flex-col bg-black lg:flex">
-        <div className="flex flex-1 flex-col bg-[#282726] p-2">
+        <div className="flex flex-1 flex-col bg-darkGray p-2">
           <div className="p-2">
             <Header />
           </div>

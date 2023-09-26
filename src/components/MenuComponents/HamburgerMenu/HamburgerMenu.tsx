@@ -11,8 +11,8 @@ export function HamburgerMenu() {
 
   return (
     <>
-      <div className="fixed w-full flex flex-col z-30 lg:hidden p-2 gap-1">
-        <div className="flex items-center p-4 justify-between bg-[#282726] rounded-lg">
+      <div className="fixed w-full flex flex-col z-30 lg:hidden">
+        <div className="flex items-center p-6 justify-between bg-darkGray">
           <Header />
           <div
             className="flex items-center justify-center w-10 h-10 rounded-full border-2 
@@ -27,7 +27,7 @@ export function HamburgerMenu() {
           </div>
         </div>
         {toggleMenu && (
-          <div className="h-screen bg-[#282726] rounded-lg">
+          <div className="h-screen bg-darkGray">
             <MenuOptions />
           </div>
         )}

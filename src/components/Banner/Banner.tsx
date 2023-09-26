@@ -18,7 +18,7 @@ export function Banner({ isFilter, data }: BannerProps) {
   }
 
   return (
-    <div className="flex w-full relative items-center flex-col justify-center lg:h-auto">
+    <div className="flex relative items-center flex-col justify-center">
       {isFilter && <Filter />}
 
       <Link className="flex w-full" to={`/details/${data[index].id}`}>
@@ -26,8 +26,8 @@ export function Banner({ isFilter, data }: BannerProps) {
           src={`https://image.tmdb.org/t/p/original${
             data && data[index]?.backdrop_path
           }`}
-          alt=""
-          className="object-cover w-full min-h-[55vh] max-h-[75vh] rounded-lg"
+          alt={`poster of movie ${data[index].title}`}
+          className="object-cover bg-darkGray w-full h-[75vh] md:rounded-lg"
         />
       </Link>
 
