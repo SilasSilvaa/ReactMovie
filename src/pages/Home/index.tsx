@@ -20,7 +20,7 @@ export function Home() {
 
   return (
     <>
-      <section className="flex flex-col gap-4 pt-24 lg:pt-0">
+      <section className="relative flex flex-col gap-4 pt-24 lg:pt-0">
         <div className="md:p-2">
           {isLoagingUpComing ? (
             <BannerSkeleton contents />
