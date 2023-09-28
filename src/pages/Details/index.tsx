@@ -18,15 +18,17 @@ export function Details() {
     data: detail,
     refetch: refechaDetails,
     isLoading: isLoadingDetails,
+    isFetching,
   } = useGetDetails('details', `movie/${id}`);
 
   const { data: recomendations, refetch: refechRecomendatiion } =
     useGetAllMovies('recomendations', `movie/${id}/recommendations`);
 
   useEffect(() => {
+    bannerRef?.current?.focus();
+
     refechaDetails();
     refechRecomendatiion();
-    bannerRef?.current?.focus();
   }, [id]);
 
   return (
@@ -44,7 +46,8 @@ export function Details() {
                   <Button className="px-4 py-2">Voltar</Button>
                 </Link>
               </div>
-              {isLoadingDetails ? (
+
+              {isFetching ? (
                 <BannerSkeleton contents={false} />
               ) : detail?.backdrop_path === null ? (
                 <>
@@ -65,6 +68,27 @@ export function Details() {
                   className="object-cover h-[70vh] md:rounded-lg"
                 />
               )}
+              {/* {isLoadingDetails ? (
+                <BannerSkeleton contents={false} />
+              ) : detail?.backdrop_path === null ? (
+                <>
+                  <span className="absolute top-[50%] left-[45%] text-white">
+                    {' '}
+                    This movie no has image
+                  </span>
+                  <img
+                    src={'/src/assets/notImageMovie.jpg'}
+                    alt=""
+                    className="max-h-[75vh] object-cover rounded-lg"
+                  />
+                </>
+              ) : (
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${detail?.backdrop_path}`}
+                  alt=""
+                  className="object-cover h-[70vh] md:rounded-lg"
+                />
+              )} */}
             </div>
           </div>
 
