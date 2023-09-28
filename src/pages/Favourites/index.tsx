@@ -7,7 +7,7 @@ export function Favourites() {
   const { data } = useGetAllMovies('favourites', 'movie/now_playing');
 
   return (
-    <section className="flex flex-col pt-20 lg:pt-0">
+    <section className="relative flex flex-col pt-20 lg:pt-0">
       <div className="relative pb-10">
         <Filter />
       </div>
