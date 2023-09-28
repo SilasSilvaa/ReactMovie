@@ -8,8 +8,8 @@ export function Layout() {
     <>
       <div className="flex bg-black">
         <Menu />
-        <HamburgerMenu />
         <section className="flex w-full h-screen flex-col overflow-y-auto scroll-smooth">
+          <HamburgerMenu />
           <Outlet />
         </section>
       </div>
