@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MenuOptions } from '../MenuOptions/MenuOptions';
 import { X, List } from '@phosphor-icons/react';
 import { Header } from '../Header/Header';
+import { useLocation } from 'react-router-dom';
 
 export function HamburgerMenu() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setToggleMenu(false);
+  }, [pathname]);
+
   function openMenu() {
     setToggleMenu((state) => !state);
   }
