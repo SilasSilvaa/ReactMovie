@@ -32,7 +32,6 @@ export function Card({ className, detail }: CardProps) {
         </Button>
       </div>
       <img
-        loading="lazy"
         src={`https://image.tmdb.org/t/p/original/${detail.poster_path}`}
         alt=""
         className="w-full h-full object-cover rounded-lg cursor-pointer"
