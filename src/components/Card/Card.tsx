@@ -31,6 +31,7 @@ export function Card({ className, detail }: CardProps) {
           <Heart size={25} className="fill-white " />
         </Button>
       </div>
+
       <img
         src={`https://image.tmdb.org/t/p/original/${detail.poster_path}`}
         alt=""

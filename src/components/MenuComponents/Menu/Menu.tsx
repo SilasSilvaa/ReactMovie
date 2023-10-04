@@ -1,6 +1,6 @@
 import React from 'react';
 import { MenuOptions } from '../MenuOptions/MenuOptions';
-import { Header } from '../Header/Header';
+import { Title } from '../Title/Title';
 
 export function Menu() {
   return (
@@ -8,7 +8,7 @@ export function Menu() {
       <aside className=" hidden flex-1 flex-col bg-black lg:flex">
         <div className="flex flex-1 flex-col bg-darkGray p-2">
           <div className="p-2">
-            <Header />
+            <Title />
           </div>
           <MenuOptions />
         </div>
